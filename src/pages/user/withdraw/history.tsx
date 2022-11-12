@@ -1,12 +1,12 @@
-import moment from "moment"
+// import moment from "moment"
 import { useRouter } from "next/router"
 import React, { useEffect } from "react"
-import DashPage from "../../../components/DashPage"
-import { useWithdraw } from "../../../hooks/useWithdraw"
+// import DashPage from "../../../components/DashPage"
+// import { useWithdraw } from "../../../hooks/useWithdraw"
 
 const History = () => {
   const router = useRouter()
-  const { data: withdraws } = useWithdraw()
+  // const { data: withdraws } = useWithdraw()
 
   useEffect(() => {
     router.push("/user/withdraw/chistory")

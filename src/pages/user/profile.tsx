@@ -5,7 +5,7 @@ import { useAccount } from "../../hooks/useAccount"
 import { User } from "@prisma/client"
 import { trpc } from "../../utils/trpc"
 import { toast } from "react-hot-toast"
-import CustomToast from "../../components/CustomToast"
+// import CustomToast from "../../components/CustomToast"
 import Link from "next/link"
 
 type UserInput = Omit<

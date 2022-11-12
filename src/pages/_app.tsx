@@ -41,7 +41,7 @@ export default withTRPC<AppRouter>({
     return {
       links: [
         loggerLink({
-          enabled: (opts) => false,
+          enabled: () => false,
         }),
         httpBatchLink({ url }),
       ],

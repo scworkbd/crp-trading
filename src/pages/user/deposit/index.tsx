@@ -12,15 +12,15 @@ const Deposit: NextPage = () => {
   const { data: settings } = useSettings()
   const [loading, setLoading] = useState<boolean>(false)
   const [amount, setAmount] = useState<string>("")
-  const [image, setImage] = useState<any>()
+  const [image, setImage] = useState<File | null>()
   const [tnx_id, setTnxId] = useState<string>("")
 
   const { mutate, isLoading } = trpc.useMutation(["user.depositCrypto"], {
     onSuccess: () => {
       setLoading(false)
       setAmount("")
-      setImage("")
-      setTnxId("")
+      setImage(null)
+      setTnxId("null")
       alert("Submitted successfully")
     },
     onError: (error) => {

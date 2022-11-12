@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { trpc } from "../utils/trpc"
 import { useRouter } from "next/router"
-import CustomToast from "../components/CustomToast"
 import { BiLockAlt } from "react-icons/bi"
 
 type Credentials = {

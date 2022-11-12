@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import DashPage from "../../../components/DashPage"
 import { useAccount } from "../../../hooks/useAccount"
-import { useForm } from "react-hook-form"
+// import { useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { trpc } from "../../../utils/trpc"
 import { useSettings } from "../../../hooks/useSettings"
@@ -14,7 +14,7 @@ import { BiLoaderAlt } from "react-icons/bi"
 const CryptoWithdraw: NextPage = () => {
   const router = useRouter()
   const { data: settings } = useSettings()
-  const { data: account, refetch } = useAccount()
+  const { data: account } = useAccount()
 
   // States
   const [amount, setAmount] = useState<string>("")

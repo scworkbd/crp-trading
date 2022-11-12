@@ -1,7 +1,7 @@
 import moment from "moment"
 import React from "react"
 import DashPage from "../../../components/DashPage"
-import { useWithdraw } from "../../../hooks/useWithdraw"
+// import { useWithdraw } from "../../../hooks/useWithdraw"
 import { trpc } from "../../../utils/trpc"
 
 const History = () => {

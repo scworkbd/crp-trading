@@ -2,8 +2,8 @@ import React from "react"
 
 import type { NextPage } from "next"
 
-import { useDeposit } from "../../hooks/useDeposits"
-import { useWithdraw } from "../../hooks/useWithdraw"
+// import { useDeposit } from "../../hooks/useDeposits"
+// import { useWithdraw } from "../../hooks/useWithdraw"
 import { useAccount } from "../../hooks/useAccount"
 import { useRouter } from "next/router"
 
@@ -20,7 +20,7 @@ import {
 import { BsCashCoin, BsCashStack } from "react-icons/bs"
 import { FaMoneyCheck, FaTelegram } from "react-icons/fa"
 
-import { trpc } from "../../utils/trpc"
+// import { trpc } from "../../utils/trpc"
 
 import toast from "react-hot-toast"
 import { useSettings } from "../../hooks/useSettings"
@@ -30,14 +30,14 @@ import { signOut } from "next-auth/react"
 
 const Dashboard: NextPage = () => {
   const { data: account } = useAccount()
-  const { data: deposits } = useDeposit()
-  const { data: withdraws } = useWithdraw()
+  // const { data: deposits } = useDeposit()
+  // const { data: withdraws } = useWithdraw()
   const { data: settings } = useSettings()
-  const { data: works } = trpc.useQuery(["user.works"])
-  const { data: pack } = trpc.useQuery([
-    "admin.packageById",
-    { packId: `${account?.current_pack}` },
-  ])
+  // const { data: works } = trpc.useQuery(["user.works"])
+  // const { data: pack } = trpc.useQuery([
+  //   "admin.packageById",
+  //   { packId: `${account?.current_pack}` },
+  // ])
   const router = useRouter()
 
   // const pendingDeposit =
@@ -45,19 +45,19 @@ const Dashboard: NextPage = () => {
   //     ?.filter((item) => item.pending === true)
   //     .reduce((prev, item) => prev + item.amount, 0) || 0
 
-  const totalDeposit =
-    deposits
-      ?.filter((item) => !item.pending && item.approved)
-      .reduce((prev, item) => prev + item.amount, 0) || 0
+  // const totalDeposit =
+  //   deposits
+  //     ?.filter((item) => !item.pending && item.approved)
+  //     .reduce((prev, item) => prev + item.amount, 0) || 0
 
   // const pendingWithdraw =
   //   withdraws
   //     ?.filter((item) => item.pending === true)
   //     .reduce((prev, iAiOutlineHistory
-  const totalWithdraw =
-    withdraws
-      ?.filter((item) => !item.pending && item.approved)
-      .reduce((prev, item) => prev + item.amount, 0) || 0
+  // const totalWithdraw =
+  //   withdraws
+  //     ?.filter((item) => !item.pending && item.approved)
+  //     .reduce((prev, item) => prev + item.amount, 0) || 0
 
   return (
     <DashPage>
