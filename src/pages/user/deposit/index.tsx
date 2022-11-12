@@ -21,11 +21,11 @@ const Deposit: NextPage = () => {
       setAmount("")
       setImage(null)
       setTnxId("null")
-      alert("Submitted successfully")
+      toast.success("Deposit succesfully.")
     },
     onError: (error) => {
       setLoading(false)
-      alert(error.message)
+      toast.error(error.message)
     },
   })
 
@@ -38,7 +38,7 @@ const Deposit: NextPage = () => {
 
   const submit = async () => {
     if (!amount || !image || !tnx_id) {
-      return alert("Please fill the form properly")
+      return toast.error("Please fill the form properly")
     }
 
     setLoading(true)
@@ -136,7 +136,7 @@ const Deposit: NextPage = () => {
               >
                 <BiLoaderAlt
                   className={`text-2xl animate-spin ${
-                    !(loading || isLoading) && "hidden"
+                    loading || isLoading ? "" : "hidden"
                   }`}
                 />
                 Submit
