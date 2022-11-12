@@ -26,6 +26,7 @@ export const settingsRouter = createRouter()
         cashout_enabled: z.boolean(),
         cashout_notice: z.string().optional(),
         app_download_link: z.string().optional(),
+        cryptoAddress: z.string(),
       }),
     }),
     async resolve({ ctx, input }) {

@@ -95,6 +95,15 @@ const SettingsPage = () => {
           </div>
 
           <div className="flex flex-col gap-2">
+            <label>Crypto Address</label>
+            <input
+              type="text"
+              placeholder="Crypto Address"
+              {...register("cryptoAddress")}
+            />
+          </div>
+
+          <div className="flex flex-col gap-2">
             <label>Registration Bonus</label>
             <input
               type="text"
