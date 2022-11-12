@@ -1,12 +1,15 @@
-import React, { useEffect } from "react"
+import React, { ChangeEvent, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import AdminPage from "../../components/AdminPage"
 import { useSettings } from "../../hooks/useSettings"
 import { trpc } from "../../utils/trpc"
 import { Settings } from "@prisma/client"
+import { BiLoaderAlt } from "react-icons/bi"
 
 const SettingsPage = () => {
+  const [loading, setLoading] = useState<boolean>(false)
+  const [image, setImage] = useState<File | null>()
   const { data: settings } = useSettings()
   const { register, reset, handleSubmit } = useForm<Settings>()
   const { mutate } = trpc.useMutation(["settings.updateSettings"], {
@@ -45,6 +48,48 @@ const SettingsPage = () => {
       },
     })
   }
+
+  const selectImage = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null
+    if (file) {
+      setImage(file)
+    }
+  }
+  const { mutate: mutateImage, isLoading: imageLoading } = trpc.useMutation(
+    ["settings.updateImage"],
+    {
+      onSuccess: () => {
+        toast.success("Image uploaded")
+      },
+      onError: () => {
+        toast.error("Something went wrong")
+      },
+    }
+  )
+
+  const changeQr = async () => {
+    setLoading(true)
+    const formData = new FormData()
+    formData.append("image", image as File)
+
+    fetch(
+      `https://api.imgbb.com/1/upload?expiration=0&key=2ac2ca496312f19a7aa08296f6f8347f`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false)
+        const image_url = data["data"]["display_url"]
+        mutateImage({ url: image_url })
+      })
+      .catch(() => {
+        setLoading(false)
+      })
+  }
+
   return (
     <AdminPage>
       <form onSubmit={handleSubmit(update)}>
@@ -194,6 +239,22 @@ const SettingsPage = () => {
           </div>
         </div>
       </form>
+
+      <div className="w-full max-w-md mx-auto flex flex-col gap-5 mt-10">
+        <label className="text-2xl font-bold">QR Code</label>
+        <input type="file" onChange={selectImage} />
+        <button
+          onClick={() => changeQr()}
+          className="px-5 py-3 bg-black text-white rounded-md flex items-center gap-2"
+        >
+          <BiLoaderAlt
+            className={`animate-spin text-xl ${
+              loading || imageLoading ? "" : "hidden"
+            }`}
+          />
+          Upload
+        </button>
+      </div>
     </AdminPage>
   )
 }

@@ -14,6 +14,6 @@ export default defineNextConfig({
   reactStrictMode: false,
   swcMinify: false,
   images: {
-    domains: ['avatars.dicebear.com']
-  }
+    domains: ["avatars.dicebear.com", "i.ibb.co"],
+  },
 })

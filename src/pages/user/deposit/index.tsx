@@ -6,7 +6,6 @@ import { trpc } from "../../../utils/trpc"
 import { BiLoaderAlt } from "react-icons/bi"
 import { useSettings } from "../../../hooks/useSettings"
 import { toast } from "react-hot-toast"
-import CustomToast from "../../../components/CustomToast"
 
 const Deposit: NextPage = () => {
   const { data: settings } = useSettings()
@@ -57,10 +56,13 @@ const Deposit: NextPage = () => {
     const data = await response.json()
     const image_url = data["data"]["display_url"]
     const amt = parseFloat(amount)
+
     if (!settings) return
+
     if (amt < settings.min_deposit) {
       return toast.error(`Minimum deposit ${settings.min_deposit} USDT`)
     }
+
     if (image_url) {
       mutate({
         amount: parseFloat(amount),
@@ -84,7 +86,12 @@ const Deposit: NextPage = () => {
         </p>
 
         <div className="flex flex-col gap-5 items-center">
-          <Image src="/qr.webp" width={400} height={400} alt="qr" />
+          <Image
+            src={settings?.qrCodeUrl as string}
+            width={400}
+            height={400}
+            alt="qr"
+          />
 
           <p className="font-bold">
             Scan the QR code or send to the address below
@@ -95,7 +102,7 @@ const Deposit: NextPage = () => {
           <button
             onClick={() => {
               navigator.clipboard.writeText(settings?.cryptoAddress as string)
-              toast.custom(<CustomToast message="Copied to clipboard" />)
+              toast.success("Copied to clipboard")
             }}
             className="text-white bg-indigo-600 px-3 py-1 rounded-md"
           >

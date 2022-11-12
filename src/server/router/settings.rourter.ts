@@ -42,3 +42,21 @@ export const settingsRouter = createRouter()
       }
     },
   })
+  .mutation("updateImage", {
+    input: z.object({
+      url: z.string(),
+    }),
+    async resolve({ ctx, input }) {
+      const settings = await ctx.prisma.settings.findFirst()
+
+      await ctx.prisma.settings.update({
+        where: {
+          id: settings?.id,
+        },
+
+        data: {
+          qrCodeUrl: input.url,
+        },
+      })
+    },
+  })
