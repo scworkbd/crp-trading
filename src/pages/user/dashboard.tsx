@@ -141,14 +141,14 @@ const Dashboard: NextPage = () => {
         </div>
       </div>
 
-      <a
-        href={settings?.live_chat_link}
-        className="mt-5 grid grid-cols-2 gap-5 p-5"
-      >
-        <div className="bg-indigo-600 p-5 rounded-md text-white flex flex-col items-center gap-2">
+      <div className="mt-5 grid grid-cols-2 gap-5 p-5">
+        <a
+          href={settings?.live_chat_link}
+          className="bg-indigo-600 p-5 rounded-md text-white flex flex-col items-center gap-2"
+        >
           <BiSupport className="text-4xl" />
           <p className="text-2xl text-white">Live Chat</p>
-        </div>
+        </a>
 
         <a
           href={settings?.telegram_link}
@@ -157,7 +157,7 @@ const Dashboard: NextPage = () => {
           <FaTelegram className="text-4xl" />
           <p className="text-2xl text-white">Telegram</p>
         </a>
-      </a>
+      </div>
     </DashPage>
   )
 }
