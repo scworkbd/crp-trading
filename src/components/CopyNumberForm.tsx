@@ -13,7 +13,7 @@ const CopyNumberForm = ({ method }: { method: "bkash" | "nagad" | "upay" }) => {
   const copyNumber = () => {
     navigator.clipboard.writeText(inputRef.current?.value as string)
     setText("Copied")
-    toast.custom(<CustomToast success message="নাম্বার কপি করা হয়েছে" />)
+    toast.success("নাম্বার কপি করা হয়েছে")
 
     setTimeout(() => {
       setText("Copy")

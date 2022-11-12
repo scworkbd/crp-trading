@@ -16,6 +16,7 @@ export const settingsRouter = createRouter()
         upay: z.string(),
         whatsapp_number: z.string(),
         telegram_link: z.string(),
+        live_chat_link: z.string(),
         registration_bonus: z.number(),
         referral_commision: z.number(),
         bkash_percentage: z.number(),
