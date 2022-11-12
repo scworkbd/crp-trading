@@ -56,7 +56,11 @@ const Deposit: NextPage = () => {
 
     const data = await response.json()
     const image_url = data["data"]["display_url"]
-
+    const amt = parseFloat(amount)
+    if (!settings) return
+    if (amt < settings.min_deposit) {
+      return toast.error(`Minimum deposit ${settings.min_deposit} USDT`)
+    }
     if (image_url) {
       mutate({
         amount: parseFloat(amount),
