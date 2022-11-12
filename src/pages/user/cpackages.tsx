@@ -65,10 +65,10 @@ const Package = () => {
               </h2>
 
               <ul className="mt-5 text-white text-xl">
+                <li>Per Task: {pack.per_click} USDT</li>
+                <li>Daily Task: {pack.daily_limit}</li>
+                <li>Daily Earn: {pack.daily_limit * pack.per_click} USDT</li>
                 <li>Cashback: {pack.cashback} USDT</li>
-                <li>Daily Ads: {pack.daily_limit}</li>
-                <li>Daily Income: {pack.daily_limit * pack.per_click} USDT</li>
-                <li>Per Click: {pack.per_click} USDT</li>
                 <li>
                   <span>Refer Bonus: </span>
                   <span>
@@ -79,7 +79,7 @@ const Package = () => {
                   </span>
                   <span> USDT</span>
                 </li>
-                <li>Expire: {pack.validity} day</li>
+                <li>Validity: {pack.validity} day</li>
               </ul>
 
               <button
