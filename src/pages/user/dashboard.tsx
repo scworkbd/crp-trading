@@ -16,6 +16,7 @@ import {
   BiLogOut,
   BiSupport,
   BiDownload,
+  BiCrown,
 } from "react-icons/bi"
 import { BsCashCoin, BsCashStack } from "react-icons/bs"
 import { FaMoneyCheck, FaTelegram } from "react-icons/fa"
@@ -69,7 +70,7 @@ const Dashboard: NextPage = () => {
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BsCashCoin className="text-3xl" />
-          <p>Withdraws</p>
+          <p className="text-xs">Withdraw history</p>
         </div>
 
         <div
@@ -77,15 +78,15 @@ const Dashboard: NextPage = () => {
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BsCashStack className="text-3xl" />
-          <p>Recharges</p>
+          <p className="text-xs">Recharge history</p>
         </div>
 
         <div
           onClick={() => router.push("/user/cpackages")}
-          className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
+          className="bg-yellow-400/80 p-5 rounded-md text-black flex flex-col items-center text-center gap-3"
         >
-          <TbPackage className="text-3xl" />
-          <p>Packages</p>
+          <BiCrown className="text-3xl" />
+          <p>VIP</p>
         </div>
 
         <div
@@ -93,7 +94,7 @@ const Dashboard: NextPage = () => {
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BiTask className="text-3xl" />
-          <p>My Task</p>
+          <p className="text-xs">My Task</p>
         </div>
 
         <div
@@ -101,7 +102,7 @@ const Dashboard: NextPage = () => {
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BiUserPlus className="text-3xl" />
-          <p>Invite Link</p>
+          <p className="text-xs">Refer Link</p>
         </div>
 
         <div
