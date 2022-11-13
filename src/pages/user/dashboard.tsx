@@ -117,7 +117,7 @@ const Dashboard: NextPage = () => {
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <FiUsers className="text-3xl" />
-          <p className="text-xs">Refer Users</p>
+          <p className="text-xs">Team</p>
         </div>
 
         <div

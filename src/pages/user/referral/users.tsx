@@ -14,9 +14,9 @@ const Referral = () => {
   return (
     <DashPage hideFooter>
       <div className="p-5">
-        <p className="mb-3 font-bold text-xl text-black p-2 rounded-md shadow-md border-2 text-center">
-          Users
-        </p>
+        <h1 className="mb-3 font-bold text-xl text-black p-2 rounded-md shadow-md border-2 text-center">
+          Your Team
+        </h1>
         <div>
           <div className="flex flex-col gap-5">
             {data?.map((ref) => (
