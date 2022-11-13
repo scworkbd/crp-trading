@@ -19,6 +19,10 @@ const Referral = () => {
         </h1>
         <div>
           <div className="flex flex-col gap-5">
+            {!data && (
+              <p className="text-2xl text-red-500 font-bold">No user</p>
+            )}
+
             {data?.map((ref) => (
               <div
                 key={ref.id}
