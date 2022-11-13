@@ -8,6 +8,10 @@ import { trpc } from "../utils/trpc"
 
 const Balance = () => {
   const { data: user } = useAccount()
+  const { data: pack } = trpc.useQuery([
+    "admin.packageById",
+    { packId: `${user?.current_pack}` },
+  ])
   const { data: deposits } = trpc.useQuery(["user.CryptoDepositsByUser"])
   const router = useRouter()
 
@@ -18,13 +22,10 @@ const Balance = () => {
           <p className="text-xl text-gray-300">Available Balance</p>
           <p className="text-white text-4xl font-bold">${user?.balance}</p>
 
-          {user && deposits && (
+          {user && pack && (
             <p className="text-zinc-300">
               <span className="font-bold">Total Balance: </span>
-              {user.balance +
-                deposits
-                  .filter((dep) => dep.approved)
-                  .reduce((prev, dep) => prev + dep.amount, 0)}
+              {user.balance + pack.price}
             </p>
           )}
         </div>
