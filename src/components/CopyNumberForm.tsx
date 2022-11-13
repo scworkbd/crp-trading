@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { toast } from "react-hot-toast"
 import { useSettings } from "../hooks/useSettings"
-import CustomToast from "./CustomToast"
+// import CustomToast from "./CustomToast"
 
 const CopyNumberForm = ({ method }: { method: "bkash" | "nagad" | "upay" }) => {
   const { data: settings } = useSettings()

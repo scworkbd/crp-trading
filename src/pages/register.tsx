@@ -33,7 +33,7 @@ const Login: NextPage = () => {
       toast.error(error.message)
     },
     onSuccess: () => {
-      toast.success("রেজিস্ট্রেশন সফল হয়েছে। লগিন করুণ")
+      toast.success("Registration completed. Please login")
       router.push("/login")
     },
   })
@@ -103,7 +103,7 @@ const Login: NextPage = () => {
             {/* <div className="flex flex-col gap-1">
               <input
                 type="text"
-                placeholder="মোবাইল নাম্বার"
+                placeholder="Mobile Number"
                 className={`border-2 ${errors.phone && "border-red-500"}`}
                 {...register("phone", {
                   required: true,

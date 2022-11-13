@@ -28,7 +28,7 @@ const Login: NextPage = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
-          toast.error("ভুল ইউজারনেম অথবা পাসওয়ার্ড")
+          toast.error("Invalid username or password")
           setLoading(false)
         } else {
           setLoading(true)
@@ -62,7 +62,7 @@ const Login: NextPage = () => {
               type="text"
               className="border-none
                w-full !bg-transparent !outline-none !ring-0"
-              placeholder="ইউজারনেইম"
+              placeholder="Username"
               {...register("username", {
                 required: {
                   value: true,
@@ -78,7 +78,7 @@ const Login: NextPage = () => {
             </div>
             <input
               type="password"
-              placeholder="পাসওয়ার্ড"
+              placeholder="Password"
               className="border-none
                w-full !bg-transparent !outline-none !ring-0"
               {...register("password", {
