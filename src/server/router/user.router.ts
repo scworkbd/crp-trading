@@ -268,21 +268,21 @@ export const userRouter = createRouter()
       if (!user) {
         throw new TRPCError({
           code: "NOT_FOUND",
-          message: "এরর",
+          message: "Something went wrong",
         })
       }
 
       if (!user.current_pack) {
         throw new TRPCError({
           code: "FORBIDDEN",
-          message: "একাউন্ট একটিভ করুণ",
+          message: "Account is not active",
         })
       }
 
       if (user.balance < input.amount) {
         throw new TRPCError({
           code: "BAD_REQUEST",
-          message: "পর্যাপ্ত ব্যালেন্স নেই",
+          message: "Not enough balance",
         })
       }
 
@@ -530,7 +530,7 @@ export const userRouter = createRouter()
       if (!user || !user.current_pack) {
         throw new TRPCError({
           code: "FORBIDDEN",
-          message: "আজকের লিমিট শেষ",
+          message: "Todays ads limit over",
         })
       }
 
@@ -571,7 +571,7 @@ export const userRouter = createRouter()
       } else {
         throw new TRPCError({
           code: "FORBIDDEN",
-          message: "আজকের লিমিট শেষ",
+          message: "Todays ads limit over",
         })
       }
     },
@@ -624,14 +624,14 @@ export const userRouter = createRouter()
         if (user.password_hash !== input.data.old_pass) {
           throw new TRPCError({
             code: "FORBIDDEN",
-            message: "ভুল পাসওয়ার্ড",
+            message: "Invalid Password",
           })
         }
 
         if (input.data.new_pass_conf !== input.data.new_pass) {
           throw new TRPCError({
             code: "FORBIDDEN",
-            message: "দুটি পাসওয়ার্ড একই নয়",
+            message: "Password and confirm password must be same",
           })
         }
 
