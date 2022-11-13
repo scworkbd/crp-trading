@@ -6,7 +6,7 @@ import CustomToast from "./CustomToast"
 import { BiLoaderAlt } from "react-icons/bi"
 
 const Timer = () => {
-  const adsDuration = 30
+  const adsDuration = 10
   const [remainingTime, setRemainingTime] = useState(adsDuration)
   const router = useRouter()
 

@@ -49,7 +49,7 @@ const Work = () => {
         {start && <Timer />}
         {!start && (
           <h1 className="text-2xl font-bold text-center py-10 text-red-500">
-            Play the video and wait 5 seconds
+            Play the video and wait 10 seconds
           </h1>
         )}
       </div>

@@ -393,7 +393,7 @@ export const userRouter = createRouter()
       if (!user) {
         throw new TRPCError({
           code: "NOT_FOUND",
-          message: "এরর",
+          message: "Something went wrong",
         })
       }
 
@@ -404,21 +404,21 @@ export const userRouter = createRouter()
       if (!pack) {
         throw new TRPCError({
           code: "NOT_FOUND",
-          message: "এরর ",
+          message: "Pack does not exists ",
         })
       }
 
       if (pack.price > user.balance) {
         throw new TRPCError({
           code: "FORBIDDEN",
-          message: "পর্যাপ্ত পরিমানে ব্যালেন্স নেই",
+          message: "You don't have enough balance",
         })
       }
 
       if (user.current_pack) {
         throw new TRPCError({
           code: "CONFLICT",
-          message: "একাউন্ট একটিভ করুণ",
+          message: "You already have a pack enabled.",
         })
       }
 
@@ -434,7 +434,7 @@ export const userRouter = createRouter()
           current_pack: pack.id,
           started_at: current,
           valid_till: future,
-          balance: user.balance - pack.price,
+          balance: user.balance - pack.price - (pack.cashback || 0),
         },
       })
 
@@ -455,10 +455,7 @@ export const userRouter = createRouter()
               id: referrer.id,
             },
             data: {
-              balance:
-                referrer.balance +
-                amount -
-                (pack?.cashback as number),
+              balance: referrer.balance + amount,
             },
           })
 
