@@ -3,7 +3,7 @@ import DashPage from "../../../components/DashPage"
 import { useSession } from "next-auth/react"
 import { toast } from "react-hot-toast"
 // import { trpc } from "../../../utils/trpc"
-import CustomToast from "../../../components/CustomToast"
+// import CustomToast from "../../../components/CustomToast"
 
 const Referral = () => {
   const { data: session } = useSession()
