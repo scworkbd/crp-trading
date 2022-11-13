@@ -434,7 +434,7 @@ export const userRouter = createRouter()
           current_pack: pack.id,
           started_at: current,
           valid_till: future,
-          balance: user.balance - pack.price - (pack.cashback || 0),
+          balance: user.balance - (pack.price - (pack.cashback || 0)),
         },
       })
 
