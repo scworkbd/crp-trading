@@ -28,6 +28,7 @@ import { useSettings } from "../../hooks/useSettings"
 import { FiUsers } from "react-icons/fi"
 // import { TbPackage } from "react-icons/tb"
 import { signOut } from "next-auth/react"
+import { trpc } from "../../utils/trpc"
 
 const Dashboard: NextPage = () => {
   // const { data: account } = useAccount()

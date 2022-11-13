@@ -4,9 +4,11 @@ import { HiOutlineCash } from "react-icons/hi"
 import { useAccount } from "../hooks/useAccount"
 import { FaHandHoldingUsd } from "react-icons/fa"
 import { useRouter } from "next/router"
+import { trpc } from "../utils/trpc"
 
 const Balance = () => {
   const { data: user } = useAccount()
+  const { data: deposits } = trpc.useQuery(["user.CryptoDepositsByUser"])
   const router = useRouter()
 
   return (
@@ -15,6 +17,16 @@ const Balance = () => {
         <div className="flex flex-col justify-center">
           <p className="text-xl text-gray-300">Available Balance</p>
           <p className="text-white text-4xl font-bold">${user?.balance}</p>
+
+          {user && deposits && (
+            <p className="text-zinc-300">
+              <span className="font-bold">Total Balance: </span>
+              {user.balance +
+                deposits
+                  .filter((dep) => dep.approved)
+                  .reduce((prev, dep) => prev + dep.amount, 0)}
+            </p>
+          )}
         </div>
         <div className="grid place-items-center text-white">
           <FaHandHoldingUsd className="text-7xl" />
