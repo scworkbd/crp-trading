@@ -4,7 +4,7 @@ import type { NextPage } from "next"
 
 // import { useDeposit } from "../../hooks/useDeposits"
 // import { useWithdraw } from "../../hooks/useWithdraw"
-import { useAccount } from "../../hooks/useAccount"
+// import { useAccount } from "../../hooks/useAccount"
 import { useRouter } from "next/router"
 
 import Balance from "../../components/Balance"
@@ -23,14 +23,14 @@ import { FaMoneyCheck, FaTelegram } from "react-icons/fa"
 
 // import { trpc } from "../../utils/trpc"
 
-import toast from "react-hot-toast"
+// import toast from "react-hot-toast"
 import { useSettings } from "../../hooks/useSettings"
 import { FiUsers } from "react-icons/fi"
-import { TbPackage } from "react-icons/tb"
+// import { TbPackage } from "react-icons/tb"
 import { signOut } from "next-auth/react"
 
 const Dashboard: NextPage = () => {
-  const { data: account } = useAccount()
+  // const { data: account } = useAccount()
   // const { data: deposits } = useDeposit()
   // const { data: withdraws } = useWithdraw()
   const { data: settings } = useSettings()

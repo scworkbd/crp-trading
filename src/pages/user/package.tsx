@@ -1,52 +1,52 @@
-import React, { Fragment, useEffect, useState } from "react"
+import React, { useEffect } from "react"
 
 import { useRouter } from "next/router"
 
-import { toast } from "react-hot-toast"
-import { Packages } from "@prisma/client"
-import { Dialog, Transition } from "@headlessui/react"
+// import { toast } from "react-hot-toast"
+// import { Packages } from "@prisma/client"
+// import { Dialog, Transition } from "@headlessui/react"
 
-import { BiChevronRight, BiLoaderAlt, BiPackage } from "react-icons/bi"
+// import { BiChevronRight, BiLoaderAlt, BiPackage } from "react-icons/bi"
 
-import DashPage from "../../components/DashPage"
-import { useSettings } from "../../hooks/useSettings"
-import CustomToast from "../../components/CustomToast"
+// import DashPage from "../../components/DashPage"
+// import { useSettings } from "../../hooks/useSettings"
+// import CustomToast from "../../components/CustomToast"
 
-import { trpc } from "../../utils/trpc"
-import { useAccount } from "../../hooks/useAccount"
+// import { trpc } from "../../utils/trpc"
+// import { useAccount } from "../../hooks/useAccount"
 
 const Package = () => {
-  const [selPack, setSelPack] = useState<Packages | null>(null)
-  const { data: account } = useAccount()
-  const { data: settings } = useSettings()
-  const { data: packages } = trpc.useQuery(["admin.packages"])
+  // const [selPack, setSelPack] = useState<Packages | null>(null)
+  // const { data: account } = useAccount()
+  // const { data: settings } = useSettings()
+  // const { data: packages } = trpc.useQuery(["admin.packages"])
   const router = useRouter()
 
-  const { mutate, isLoading } = trpc.useMutation(["user.subscribe"], {
-    onSuccess: () => {
-      toast.custom(<CustomToast success message="প্যাকেজ চালু হয়েছে" />)
-      router.push("/user/dashboard")
-    },
-    onError: () => {
-      if (account?.current_pack) {
-        toast.custom(<CustomToast message="ইতমধ্যে একটি প্যাক চালু আছে" />)
-      } else {
-        toast.custom(
-          <CustomToast message="আপনার পর্যাপ্ত পরিমানে ব্যালেন্স নেই" />
-        )
-      }
-    },
-  })
+  // const { mutate, isLoading } = trpc.useMutation(["user.subscribe"], {
+  //   onSuccess: () => {
+  //     toast.custom(<CustomToast success message="প্যাকেজ চালু হয়েছে" />)
+  //     router.push("/user/dashboard")
+  //   },
+  //   onError: () => {
+  //     if (account?.current_pack) {
+  //       toast.custom(<CustomToast message="ইতমধ্যে একটি প্যাক চালু আছে" />)
+  //     } else {
+  //       toast.custom(
+  //         <CustomToast message="আপনার পর্যাপ্ত পরিমানে ব্যালেন্স নেই" />
+  //       )
+  //     }
+  //   },
+  // })
 
-  const startPackage = () => {
-    if (!selPack) {
-      return
-    }
+  // const startPackage = () => {
+  //   if (!selPack) {
+  //     return
+  //   }
 
-    mutate({
-      pack: selPack.id,
-    })
-  }
+  //   mutate({
+  //     pack: selPack.id,
+  //   })
+  // }
 
   useEffect(() => {
     router.push("/user/cpackages")

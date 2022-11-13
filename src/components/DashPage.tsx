@@ -5,7 +5,6 @@ import { useRouter } from "next/router"
 import { signIn } from "next-auth/react"
 
 import Loading from "./Loading"
-import { TbPackage } from "react-icons/tb"
 import { BiChevronLeft, BiCrown } from "react-icons/bi"
 import { AiFillHome } from "react-icons/ai"
 import { useAccount } from "../hooks/useAccount"
