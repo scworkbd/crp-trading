@@ -23,9 +23,15 @@ const Balance = () => {
           <p className="text-white text-4xl font-bold">${user?.balance}</p>
 
           {user && pack && (
-            <p className="text-zinc-300">
-              <span className="font-bold">Total Balance: </span>
-              {user.balance + pack.price}
+            <p className="mt-5">
+              <p className="text-zinc-200">
+                <span className="font-bold">Total Balance: </span>
+                {user.balance + pack.price}
+              </p>
+              <p className="text-zinc-200">
+                <span className="font-bold">Current Pack: </span>
+                {pack.name}
+              </p>
             </p>
           )}
         </div>
