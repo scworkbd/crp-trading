@@ -37,32 +37,6 @@ const Referral = () => {
           </button>
         </div>
       </div>
-
-      <div className="p-5">
-        <p className="mb-3 font-bold text-xl text-black p-2 rounded-md shadow-md border-2 text-center">
-          Users
-        </p>
-        <div>
-          <div className="flex flex-col gap-5">
-            {data?.map((ref) => (
-              <div
-                key={ref.id}
-                className="bg-black text-zinc-200 p-5 rounded-md"
-              >
-                <p className="text-left whitespace-nowrap text-lg font-bold">
-                  {ref.first_name} {ref.last_name}
-                </p>
-                <p className="text-left whitespace-nowrap">
-                  Username: {ref.username}
-                </p>
-                <p className="text-left whitespace-nowrap">
-                  Email: {ref.email}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </DashPage>
   )
 }

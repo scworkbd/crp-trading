@@ -97,11 +97,7 @@ const Dashboard: NextPage = () => {
         </div>
 
         <div
-          onClick={() => {
-            const ref = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/register?ref=${account?.username}`
-            navigator.clipboard.writeText(ref)
-            toast.success("Copied to clipboard")
-          }}
+          onClick={() => router.push("/user/referral")}
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BiUserPlus className="text-3xl" />
@@ -117,7 +113,7 @@ const Dashboard: NextPage = () => {
         </div>
 
         <div
-          onClick={() => router.push("/user/referral")}
+          onClick={() => router.push("/user/referral/users")}
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <FiUsers className="text-3xl" />

@@ -80,11 +80,8 @@ const DashPage = ({ children }: Props) => {
         <div>
           <Image src="/logo.png" height={50} width={50} alt="logo" />
         </div>
-        <div className="flex items-center gap-2">
-          <FaSignOutAlt
-            className="text-red-500 text-xl"
-            onClick={() => signOut()}
-          />
+        <div onClick={() => signOut()} className="flex items-center gap-2">
+          <FaSignOutAlt className="text-red-500 text-xl" />
           <span>Logout</span>
         </div>
       </header>
@@ -116,13 +113,13 @@ const DashPage = ({ children }: Props) => {
           <span>VIP</span>
         </div>
 
-        <div
+        {/* <div
           onClick={() => router.push("/user/cpackages")}
           className="flex flex-col items-center"
         >
           <TbPackage className="text-2xl" />
           <span>Package</span>
-        </div>
+        </div> */}
 
         <div
           onClick={() => router.push("/user/profile")}
