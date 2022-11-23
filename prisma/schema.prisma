@@ -14,7 +14,7 @@ model User {
     last_name     String
     password_hash String
     email         String     @unique
-    phone         String?    @unique
+    phone         String     @unique
     balance       Float      @default(50)
     referrer      String?
     deposits      Deposit[]

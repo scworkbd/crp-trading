@@ -8,17 +8,11 @@ import { toast } from "react-hot-toast"
 // import CustomToast from "../../components/CustomToast"
 import Link from "next/link"
 
-type UserInput = Omit<
-  User,
-  | "password_hash"
-  | "current_pack"
-  | "started_at"
-  | "valid_till"
-  | "referrer"
-  | "balance"
-  | "id"
-  | "phone"
->
+type UserInput = {
+  first_name: string
+  last_name: string
+  phone: string
+}
 
 const ChPWD = () => {
   const { data: account } = useAccount()
@@ -39,7 +33,11 @@ const ChPWD = () => {
 
   useEffect(() => {
     if (account) {
-      reset(account)
+      reset({
+        first_name: account.first_name,
+        last_name: account.last_name,
+        phone: account.phone,
+      })
     }
   }, [account, reset])
   return (
@@ -76,8 +74,8 @@ const ChPWD = () => {
             </div>
           </div>
 
-          {/* <div className="flex flex-col gap-1">
-            <label htmlFor="phone">মোবাইল নাম্বার</label>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="phone">Mobile Number</label>
             <input
               type="text"
               className={`border-2 rounded-md border-zinc-300 shadow-md`}
@@ -85,14 +83,14 @@ const ChPWD = () => {
                 required: true,
               })}
             />
-          </div> */}
+          </div>
 
           <div className="flex flex-col gap-1">
             <label htmlFor="email">Email</label>
             <input
               type="email"
               disabled
-              className={`border-2 rounded-md border-zinc-300 shadow-md bg-zinc-400`}
+              className={`border-2 rounded-md border-zinc-200 shadow-md bg-zinc-100`}
               value={account?.email}
             />
           </div>
@@ -103,7 +101,7 @@ const ChPWD = () => {
               type="text"
               disabled
               value={account?.username}
-              className={`border-2 rounded-md border-zinc-300 shadow-md bg-zinc-400`}
+              className={`border-2 rounded-md border-zinc-200 shadow-md bg-zinc-100`}
             />
           </div>
 

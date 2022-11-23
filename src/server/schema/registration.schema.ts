@@ -5,7 +5,7 @@ export const registerSchema = z.object({
   last_name: z.string(),
   username: z.string(),
   email: z.string(),
-  phone: z.string().optional(),
+  phone: z.string(),
   password_hash: z.string(),
   referrer: z.string().optional(),
 })
@@ -13,7 +13,7 @@ export const registerSchema = z.object({
 export const upUserSchema = z.object({
   first_name: z.string(),
   last_name: z.string(),
-  phone: z.string().optional(),
+  phone: z.string(),
 })
 
 export const cpUserSchema = z.object({
@@ -27,7 +27,7 @@ export const userUpdateScheama = z.object({
   last_name: z.string(),
   username: z.string(),
   email: z.string(),
-  phone: z.string().optional(),
+  phone: z.string(),
   password_hash: z.string(),
   balance: z.number(),
   is_admin: z.boolean(),

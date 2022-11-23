@@ -43,7 +43,7 @@ const ChPWD = () => {
 
             <input
               type="password"
-              className="border-2 border-zinc-400 rounded-md"
+              className="border-2 border-zinc-100 rounded-md"
               {...register("old_pass", {
                 required: true,
                 minLength: 6,
@@ -56,7 +56,7 @@ const ChPWD = () => {
 
             <input
               type="password"
-              className="border-2 border-zinc-400 rounded-md"
+              className="border-2 border-zinc-100 rounded-md"
               {...register("new_pass", {
                 required: true,
                 minLength: 6,
@@ -69,7 +69,7 @@ const ChPWD = () => {
 
             <input
               type="password"
-              className="border-2 border-zinc-400 rounded-md"
+              className="border-2 border-zinc-100 rounded-md"
               {...register("new_pass_conf", {
                 validate: (value: string) => {
                   const values = getValues()
