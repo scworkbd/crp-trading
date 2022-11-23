@@ -78,7 +78,7 @@ const Dashboard: NextPage = () => {
         </div>
 
         <div
-          onClick={() => router.push("/user/cpackages")}
+          onClick={() => router.push("/user/package")}
           className="bg-yellow-400/80 p-5 rounded-md text-black flex flex-col items-center text-center gap-3"
         >
           <BiCrown className="text-3xl" />

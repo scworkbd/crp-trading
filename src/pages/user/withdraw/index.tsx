@@ -103,145 +103,156 @@ const Withdraw: NextPage = () => {
   return (
     <>
       <DashPage hideFooter>
-        <div className="p-5">
-          <div>
-            {!settings?.cashout_enabled ? (
-              <>
-                <h1 className="text-2xl font-bold mb-5 text-center p-2 shadow-md border-2 rounded-md">
-                  Notice
-                </h1>
-                <span className="w-full px-10 py-5 border-2 border-rose-600 block">
-                  {settings?.cashout_notice}
-                </span>
-              </>
-            ) : (
-              <h1 className="text-2xl font-bold mb-5 text-center p-2 shadow-md border-2 rounded-md">
-                Withdraw
-              </h1>
-            )}
+        {!account || !account.current_pack ? (
+          <div className="p-5">
+            <h1 className="text-2xl font-bold mb-5 text-center p-2 shadow-md border-2 rounded-md">
+              Withdraw
+            </h1>
+            <h1 className="text-2xl text-center text-red-500 font-bold">
+              Account is not active
+            </h1>
           </div>
-          {settings?.cashout_enabled && (
-            <>
-              {!method && (
-                <div className="grid grid-cols-1 gap-5">
-                  <div
-                    onClick={() => setMethod("bkash")}
-                    className="flex items-center justify-center bg-zinc-100 shadow-md p-5 gap-5 rounded-lg"
-                  >
-                    <div>
-                      <Image
-                        src="/icons/bkash.png"
-                        width={50}
-                        height={50}
-                        alt="bkash"
-                      />
-                    </div>
-
-                    <p className="text-2xl font-bold uppercase">Bkash</p>
-                    <BiChevronRight className="text-2xl ml-auto" />
-                  </div>
-
-                  <div
-                    onClick={() => setMethod("nagad")}
-                    className="flex items-center bg-zinc-100 shadow-md p-5 gap-5 rounded-lg"
-                  >
-                    <div>
-                      <Image
-                        src="/icons/nagad.png"
-                        width={50}
-                        height={50}
-                        alt="bkash"
-                      />
-                    </div>
-
-                    <p className="text-2xl font-bold uppercase">Nagad</p>
-
-                    <BiChevronRight className="text-2xl ml-auto" />
-                  </div>
-                </div>
-              )}
-
-              {method && !withData && (
+        ) : (
+          <div className="p-5">
+            <div>
+              {!settings?.cashout_enabled ? (
                 <>
-                  <h2 className="text-2xl font-bold">Method: {method}</h2>
+                  <h1 className="text-2xl font-bold mb-5 text-center p-2 shadow-md border-2 rounded-md">
+                    Notice
+                  </h1>
+                  <span className="w-full px-10 py-5 border-2 border-rose-600 block">
+                    {settings?.cashout_notice}
+                  </span>
+                </>
+              ) : (
+                <h1 className="text-2xl font-bold mb-5 text-center p-2 shadow-md border-2 rounded-md">
+                  Withdraw
+                </h1>
+              )}
+            </div>
+            {settings?.cashout_enabled && (
+              <>
+                {!method && (
+                  <div className="grid grid-cols-1 gap-5">
+                    <div
+                      onClick={() => setMethod("bkash")}
+                      className="flex items-center justify-center bg-zinc-100 shadow-md p-5 gap-5 rounded-lg"
+                    >
+                      <div>
+                        <Image
+                          src="/icons/bkash.png"
+                          width={50}
+                          height={50}
+                          alt="bkash"
+                        />
+                      </div>
 
-                  <p className="text-red-500">
-                    Minimum withdraw {settings.min_withdraw} BDT and Maximum{" "}
-                    {settings.max_withdraw} BDT
-                  </p>
-                  <form
-                    onSubmit={handleSubmit(submitWithdrawal)}
-                    className="flex flex-col gap-2 mt-3"
-                  >
-                    <input
-                      type="text"
-                      placeholder={`${method} Number`}
-                      {...register("mobile_number")}
-                    />
-                    <input
-                      type="text"
-                      placeholder="Amount"
-                      {...register("amount")}
-                    />
+                      <p className="text-2xl font-bold uppercase">Bkash</p>
+                      <BiChevronRight className="text-2xl ml-auto" />
+                    </div>
+
+                    <div
+                      onClick={() => setMethod("nagad")}
+                      className="flex items-center bg-zinc-100 shadow-md p-5 gap-5 rounded-lg"
+                    >
+                      <div>
+                        <Image
+                          src="/icons/nagad.png"
+                          width={50}
+                          height={50}
+                          alt="bkash"
+                        />
+                      </div>
+
+                      <p className="text-2xl font-bold uppercase">Nagad</p>
+
+                      <BiChevronRight className="text-2xl ml-auto" />
+                    </div>
+                  </div>
+                )}
+
+                {method && !withData && (
+                  <>
+                    <h2 className="text-2xl font-bold">Method: {method}</h2>
+
+                    <p className="text-red-500">
+                      Minimum withdraw {settings.min_withdraw} BDT and Maximum{" "}
+                      {settings.max_withdraw} BDT
+                    </p>
+                    <form
+                      onSubmit={handleSubmit(submitWithdrawal)}
+                      className="flex flex-col gap-2 mt-3"
+                    >
+                      <input
+                        type="text"
+                        placeholder={`${method} Number`}
+                        {...register("mobile_number")}
+                      />
+                      <input
+                        type="text"
+                        placeholder="Amount"
+                        {...register("amount")}
+                      />
+
+                      <div className="mt-5 flex gap-2 items-center">
+                        <button
+                          type="submit"
+                          className="px-5 py-3 text-sm bg-black text-white"
+                        >
+                          Withdraw
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            setMethod(null)
+                          }}
+                          className="px-5 py-3 bg-red-600 text-white"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </>
+                )}
+
+                {withData && (
+                  <>
+                    <h2 className="text-2xl">
+                      Method:{" "}
+                      <span className="font-semibold capitalize">
+                        {withData.method}
+                      </span>
+                    </h2>
+
+                    <h2 className="text-2xl">Amount: {withData.amount} BDT</h2>
+                    <h2 className="text-2xl">Fees: {withData.fees} BDT</h2>
+                    <h2 className="text-2xl">
+                      You get: {withData.amount - withData.fees} BDT
+                    </h2>
 
                     <div className="mt-5 flex gap-2 items-center">
                       <button
-                        type="submit"
-                        className="px-5 py-3 text-sm bg-black text-white"
+                        onClick={() => executeWithdraw()}
+                        className="px-5 py-3 bg-green-600 text-white"
                       >
-                        Withdraw
+                        Submit
                       </button>
 
                       <button
                         onClick={() => {
-                          setMethod(null)
+                          setWithData(undefined)
                         }}
                         className="px-5 py-3 bg-red-600 text-white"
                       >
-                        Cancel
+                        Back
                       </button>
                     </div>
-                  </form>
-                </>
-              )}
-
-              {withData && (
-                <>
-                  <h2 className="text-2xl">
-                    Method:{" "}
-                    <span className="font-semibold capitalize">
-                      {withData.method}
-                    </span>
-                  </h2>
-
-                  <h2 className="text-2xl">Amount: {withData.amount} BDT</h2>
-                  <h2 className="text-2xl">Fees: {withData.fees} BDT</h2>
-                  <h2 className="text-2xl">
-                    You get: {withData.amount - withData.fees} BDT
-                  </h2>
-
-                  <div className="mt-5 flex gap-2 items-center">
-                    <button
-                      onClick={() => executeWithdraw()}
-                      className="px-5 py-3 bg-green-600 text-white"
-                    >
-                      Submit
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        setWithData(undefined)
-                      }}
-                      className="px-5 py-3 bg-red-600 text-white"
-                    >
-                      Back
-                    </button>
-                  </div>
-                </>
-              )}
-            </>
-          )}
-        </div>
+                  </>
+                )}
+              </>
+            )}
+          </div>
+        )}
       </DashPage>
     </>
   )
