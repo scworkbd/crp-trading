@@ -55,7 +55,7 @@ const Dashboard: NextPage = () => {
               <div className="grid grid-cols-3">
                 <div className="px-3 py-3">Video</div>
                 <div className="px-2 py-3 whitespace-nowrap">
-                  {pack ? pack.per_click : "..."} USDT
+                  {pack ? pack.per_click : "..."} BDT
                 </div>
                 <button
                   onClick={() => showAds()}

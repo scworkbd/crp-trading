@@ -20,7 +20,7 @@ const History = () => {
             >
               <p className="text-lg font-bold">{deposit.tnx_id}</p>
               <div className="text-rose-500 text-xl mt-5">
-                {deposit.amount} USDT
+                {deposit.amount} BDT
               </div>
               <div className="absolute top-5 right-5">
                 {deposit.pending ? (

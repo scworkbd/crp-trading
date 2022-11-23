@@ -25,7 +25,7 @@ const History = () => {
                 <div className="text-left text-xl font-bold flex items-center justify-between">
                   <span>{withdraw.referrerFullName}</span>
                   <span className="text-left text-white text-2xl">
-                    {withdraw.amount} USDT
+                    {withdraw.amount} BDT
                   </span>
                 </div>
                 <div className="text-left text-sm flex items-center justify-between">
