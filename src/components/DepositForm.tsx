@@ -22,7 +22,7 @@ const DepositForm = ({ method }: Props) => {
 
   const { mutate, isLoading } = trpc.useMutation(["user.deposit"], {
     onSuccess: () => {
-      toast.custom(<CustomToast success message="Deposit request submitted." />)
+      toast.success("Deposit request submitted.")
       reset()
     },
   })
@@ -33,10 +33,8 @@ const DepositForm = ({ method }: Props) => {
     if (!settings) return
 
     if (!amount || amount < settings?.min_deposit || amount > 25000) {
-      return toast.custom(
-        <CustomToast
-          message={`Minimum ${settings?.min_deposit} and Maximum 25,000 BDT`}
-        />
+      return toast.error(
+        `Minimum ${settings?.min_deposit} and Maximum 25,000 BDT`
       )
     }
 
@@ -77,7 +75,7 @@ const DepositForm = ({ method }: Props) => {
               type="submit"
               className="px-7 py-3 bg-black rounded-md text-white flex items-center justify-center gap-2"
             >
-              {isLoading && <BiLoaderAlt />}
+              {isLoading && <BiLoaderAlt className="animate-spin" />}
               <span>Submit</span>
             </button>
           </div>
