@@ -29,7 +29,6 @@ const EditUser = () => {
         per_click: Number(values.per_click),
         daily_limit: Number(values.daily_limit),
         validity: Number(values.validity),
-        cashback: Number(values.cashback),
       },
     })
   }
@@ -75,16 +74,6 @@ const EditUser = () => {
               type="number"
               placeholder="Per Click"
               {...register("per_click", { required: true })}
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label>Cashback</label>
-            <input
-              className={`${errors.cashback && "!border-red-500"}`}
-              type="number"
-              placeholder="Cashback"
-              {...register("cashback", { required: true })}
             />
           </div>
 

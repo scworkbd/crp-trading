@@ -40,5 +40,4 @@ export const packSchema = z.object({
   daily_limit: z.number(),
   per_click: z.number(),
   validity: z.number(),
-  cashback: z.number(),
 })

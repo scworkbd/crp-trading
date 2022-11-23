@@ -38,7 +38,6 @@ const EditPack = () => {
         per_click: Number(values.per_click),
         daily_limit: Number(values.daily_limit),
         validity: Number(values.validity),
-        cashback: Number(values.cashback),
       },
     })
   }
@@ -72,15 +71,6 @@ const EditPack = () => {
               type="number"
               placeholder="Per Click"
               {...register("per_click")}
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label>Cashback</label>
-            <input
-              type="number"
-              placeholder="Cashback"
-              {...register("cashback")}
             />
           </div>
 
