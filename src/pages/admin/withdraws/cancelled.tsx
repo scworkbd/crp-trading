@@ -6,10 +6,8 @@ import AdminPage from "../../../components/AdminPage"
 import { trpc } from "../../../utils/trpc"
 
 const Withs = () => {
-  const { data: deposits, refetch } = trpc.useQuery([
-    "cwithdraw.withdrawsWUser",
-  ])
-  const { mutate } = trpc.useMutation(["cwithdraw.approveWith"], {
+  const { data: deposits, refetch } = trpc.useQuery(["withdraw.withdrawsWUser"])
+  const { mutate } = trpc.useMutation(["withdraw.approveWith"], {
     onSuccess: () => {
       toast.success("Withdraw Approved")
       refetch()
@@ -51,11 +49,10 @@ const Withs = () => {
           <tr>
             <td className="px-5 py-2 whitespace-nowrap">Tracking Number</td>
             <td className="px-5 py-2">Username</td>
-            <td className="px-5 py-2">Address</td>
             <td className="px-5 py-2">Amount</td>
             <td className="px-5 py-2">Fees</td>
             <td className="px-5 py-2">Pay</td>
-            {/* <td className="px-5 py-2">Wallet</td> */}
+            <td className="px-5 py-2">Wallet</td>
             <td className="px-5 py-2">Date</td>
             <td className="px-5 py-2">Action</td>
           </tr>
@@ -70,13 +67,12 @@ const Withs = () => {
               <tr key={dep.id} className="odd:bg-zinc-200">
                 <td className="px-5 py-2">{dep.id}</td>
                 <td className="px-5 py-2">{dep.user.username}</td>
-                <td className="px-5 py-2">{dep.address}</td>
                 <td className="px-5 py-2">{dep.amount}</td>
                 <td className="px-5 py-2">{dep.fees.toFixed(2)}</td>
                 <td className="px-5 py-2">
                   {dep.amount - parseFloat(dep.fees.toFixed(2))}
                 </td>
-                {/* <td className="px-5 py-2">{dep.method}</td> */}
+                <td className="px-5 py-2">{dep.method}</td>
                 <td className="px-5 py-2 whitespace-nowrap">
                   {moment(dep.date).format("DD MMM, YYYY hh:mm a")}
                 </td>

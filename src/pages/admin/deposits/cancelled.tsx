@@ -6,10 +6,8 @@ import AdminPage from "../../../components/AdminPage"
 import { trpc } from "../../../utils/trpc"
 
 const Deposits = () => {
-  const { data: deposits, refetch } = trpc.useQuery([
-    "deposit.cryptoDepositsWUser",
-  ])
-  const { mutate } = trpc.useMutation(["deposit.approveCryptoDeposit"], {
+  const { data: deposits, refetch } = trpc.useQuery(["deposit.depositsWUser"])
+  const { mutate } = trpc.useMutation(["deposit.approveDeposit"], {
     onSuccess: () => {
       toast.success("Deposit Approved")
       refetch()
@@ -52,7 +50,7 @@ const Deposits = () => {
             <td className="px-5 py-2">Username</td>
             <td className="px-5 py-2">TNX ID</td>
             <td className="px-5 py-2">Amount</td>
-            <td className="px-5 py-2">Image</td>
+            <td className="px-5 py-2">Method</td>
             <td className="px-5 py-2">Date</td>
             <td className="px-5 py-2">Action</td>
           </tr>
@@ -69,17 +67,8 @@ const Deposits = () => {
                 <td className="px-5 py-2">{dep.user.username}</td>
                 <td className="px-5 py-2">{dep.tnx_id}</td>
                 <td className="px-5 py-2">{dep.amount}</td>
-                {/* <td className="px-5 py-2">{dep.method}</td> */}
-                <td className="px-5 py-2">
-                  <a
-                    href={dep.image_url}
-                    className="text-indigo-500"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View Image
-                  </a>
-                </td>
+                <td className="px-5 py-2">{dep.method}</td>
+
                 <td className="px-5 py-2 whitespace-nowrap">
                   {moment(dep.date).format("DD MMM, YYYY hh:mm a")}
                 </td>
