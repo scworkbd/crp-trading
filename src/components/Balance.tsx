@@ -19,15 +19,11 @@ const Balance = () => {
     <div className="grid grid-cols-2 gap-3 p-5">
       <div className="col-span-2 p-5 bg-indigo-600 flex items-center justify-between rounded-md">
         <div className="flex flex-col justify-center">
-          <p className="text-xl text-gray-300">Available Balance</p>
+          <p className="text-xl text-gray-300">Total Balance</p>
           <p className="text-white text-4xl font-bold">${user?.balance}</p>
 
           {user && pack && (
             <p className="mt-5">
-              <p className="text-zinc-200">
-                <span className="font-bold">Total Balance: </span>
-                {user.balance + pack.price}
-              </p>
               <p className="text-zinc-200">
                 <span className="font-bold">Current Pack: </span>
                 {pack.name}

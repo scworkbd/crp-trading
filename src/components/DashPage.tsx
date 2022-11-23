@@ -105,11 +105,11 @@ const DashPage = ({ children }: Props) => {
         </div>
 
         <div
-          onClick={() => router.push("/user/cpackages")}
+          onClick={() => router.push("/user/package")}
           className="flex flex-col items-center"
         >
           <BiCrown className="text-2xl" />
-          <span>VIP</span>
+          <span>Package</span>
         </div>
 
         {/* <div

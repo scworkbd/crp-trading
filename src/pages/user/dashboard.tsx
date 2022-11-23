@@ -17,18 +17,12 @@ import {
   BiSupport,
   BiDownload,
   BiCrown,
+  BiWorld,
 } from "react-icons/bi"
 import { BsCashCoin, BsCashStack } from "react-icons/bs"
 import { FaMoneyCheck, FaTelegram } from "react-icons/fa"
-
-// import { trpc } from "../../utils/trpc"
-
-// import toast from "react-hot-toast"
 import { useSettings } from "../../hooks/useSettings"
-import { FiUsers } from "react-icons/fi"
-// import { TbPackage } from "react-icons/tb"
 import { signOut } from "next-auth/react"
-import moment from "moment"
 // import { trpc } from "../../utils/trpc"
 
 const Dashboard: NextPage = () => {
@@ -66,17 +60,6 @@ const Dashboard: NextPage = () => {
     <DashPage>
       <Balance />
 
-      {account?.started_at && (
-        <p className="p-5 font-semibold text-center">
-          You can withdraw your total balance on{" "}
-          <span>
-            {moment(
-              account.started_at.setDate(account.started_at.getDate() + 10)
-            ).format("DD MMM, YYYY")}
-          </span>
-        </p>
-      )}
-      <div></div>
       <div className="mt-5 grid grid-cols-3 gap-3 p-5">
         <div
           onClick={() => router.push("/user/withdraw/history")}
@@ -99,7 +82,7 @@ const Dashboard: NextPage = () => {
           className="bg-yellow-400/80 p-5 rounded-md text-black flex flex-col items-center text-center gap-3"
         >
           <BiCrown className="text-3xl" />
-          <p>VIP</p>
+          <p className="text-xs">Package</p>
         </div>
 
         <div
@@ -107,15 +90,15 @@ const Dashboard: NextPage = () => {
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BiTask className="text-3xl" />
-          <p className="text-xs">My Task</p>
+          <p className="text-xs">Work</p>
         </div>
 
         <div
-          onClick={() => router.push("/user/referral")}
+          onClick={() => router.push("/user/referral/users")}
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BiUserPlus className="text-3xl" />
-          <p className="text-xs">Refer Link</p>
+          <p className="text-xs">Refer</p>
         </div>
 
         <div
@@ -130,8 +113,8 @@ const Dashboard: NextPage = () => {
           onClick={() => router.push("/user/referral/users")}
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
-          <FiUsers className="text-3xl" />
-          <p className="text-xs">Team</p>
+          <BiWorld className="text-3xl" />
+          <p className="text-xs">Work History</p>
         </div>
 
         <a

@@ -13,28 +13,7 @@ const Referral = () => {
 
   return (
     <DashPage hideFooter>
-      <div className="p-5">
-        <p className="mb-3 text-center font-bold text-xl p-2 shadow-md border-2">
-          Invite Link
-        </p>
-        <div>
-          <input
-            type="text"
-            value={ref}
-            className="w-full border-2 border-black"
-          />
-
-          <button
-            onClick={() => {
-              navigator.clipboard.writeText(ref)
-              toast.success("Refer link copied to clipboard")
-            }}
-            className="px-5 py-3 bg-black rounded-md text-white block mt-3"
-          >
-            Copy
-          </button>
-        </div>
-      </div>
+      <div className="p-5"></div>
     </DashPage>
   )
 }
