@@ -355,6 +355,21 @@ export const userRouter = createRouter()
       }
     },
   })
+  .query("workhistory", {
+    async resolve({ ctx }) {
+      if (!ctx.session?.user) {
+        return
+      }
+
+      const works = await ctx.prisma.work.findMany({
+        where: {
+          userId: ctx.session?.user?.id as string,
+        },
+      })
+
+      return works
+    },
+  })
   .query("works", {
     async resolve({ ctx }) {
       const user = await ctx.prisma.user.findUnique({

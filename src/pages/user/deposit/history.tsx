@@ -4,7 +4,7 @@ import DashPage from "../../../components/DashPage"
 import { trpc } from "../../../utils/trpc"
 
 const History = () => {
-  const { data: deposits } = trpc.useQuery(["user.CryptoDepositsByUser"])
+  const { data: deposits } = trpc.useQuery(["user.depositsByUser"])
 
   return (
     <DashPage hideFooter>

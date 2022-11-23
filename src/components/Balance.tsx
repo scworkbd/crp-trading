@@ -12,7 +12,7 @@ const Balance = () => {
     "admin.packageById",
     { packId: `${user?.current_pack}` },
   ])
-  const { data: deposits } = trpc.useQuery(["user.CryptoDepositsByUser"])
+  const { data: deposits } = trpc.useQuery(["user.depositsByUser"])
   const router = useRouter()
 
   return (
