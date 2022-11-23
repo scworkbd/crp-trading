@@ -22,12 +22,7 @@ const DepositForm = ({ method }: Props) => {
 
   const { mutate, isLoading } = trpc.useMutation(["user.deposit"], {
     onSuccess: () => {
-      toast.custom(
-        <CustomToast
-          success
-          message="ডিপোজিট রিকুয়েস্ট করা হয়েছে। কিছুক্ষনের মধ্যে আপনার ব্যালেন্স এ যুক্ত হয়ে যাবে"
-        />
-      )
+      toast.custom(<CustomToast success message="Deposit request submitted." />)
       reset()
     },
   })
@@ -40,7 +35,7 @@ const DepositForm = ({ method }: Props) => {
     if (!amount || amount < settings?.min_deposit || amount > 25000) {
       return toast.custom(
         <CustomToast
-          message={`সর্বনিম্ন ${settings?.min_deposit} ও সর্বোচ্চ 25,000 টাকা ডিপোজিট করা যাবে`}
+          message={`Minimum ${settings?.min_deposit} and Maximum 25,000 BDT`}
         />
       )
     }
@@ -57,30 +52,30 @@ const DepositForm = ({ method }: Props) => {
 
   return (
     <div className="mt-20">
-      <p className="mt-10 text-xl font-bold text-center">
-        {`সর্বনিম্ন ${settings?.min_deposit} ও সর্বোচ্চ 25,000 টাকা ডিপোজিট করা যাবে`}
+      <p className="mt-10 text-xl">
+        {`Minimum ${settings?.min_deposit} and Maximum 25,000`}
       </p>
 
       <form className="mt-3" onSubmit={handleSubmit(deposit)}>
         <div className="flex flex-col gap-4">
           <input
             type="text"
-            placeholder="টাকার পরিমান"
+            placeholder="Amount"
             required
-            className="text-center shadow-md border-2 border-rose-600"
+            className="text-center shadow-md border-2 rounded-md border-zinc-300"
             {...register("amount", { required: true })}
           />
           <input
             type="text"
-            className="text-center shadow-md border-2 border-rose-600"
-            placeholder="ট্রানজেকশন আইডি"
+            className="text-center shadow-md border-2 rounded-md border-zinc-300"
+            placeholder="TNX ID"
             {...register("tnx_id", { required: true })}
           />
 
           <div>
             <button
               type="submit"
-              className="px-7 py-3 bg-rose-900 w-full text-white flex items-center justify-center gap-2 "
+              className="px-7 py-3 bg-black rounded-md text-white flex items-center justify-center gap-2"
             >
               {isLoading && <BiLoaderAlt />}
               <span>Submit</span>

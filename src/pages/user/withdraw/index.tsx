@@ -1,9 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import type { NextPage } from "next"
 import DashPage from "../../../components/DashPage"
 import Image from "next/image"
 import { useAccount } from "../../../hooks/useAccount"
-import { Dialog, Transition } from "@headlessui/react"
 import { useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { trpc } from "../../../utils/trpc"
@@ -33,7 +32,7 @@ const Withdraw: NextPage = () => {
   const { mutate, isLoading: wLoading } = trpc.useMutation(["user.withdraw"], {
     onSuccess: () => {
       toast.success("Withdraw request has been submitted and pending")
-      // reset()
+      reset()
       refetch()
       setMethod(null)
       setWithData(undefined)

@@ -8,11 +8,14 @@ const Deposit: NextPage = () => {
   return (
     <DashPage hideFooter>
       <div className="p-5">
+        <h1
+          className="p-2 text-center text-2xl font-bold shadow-md border-2
+        "
+        >
+          Nagad Deposit
+        </h1>
         <div className="mt-5shadow-md rounded-md p-5">
-          <p className="text-center text-lg font-bold">
-            নিচের নাম্বারটিতে সেন্ড মানি করে ডিপোজিট এর এমাউন্ট ও ট্রানজেকশন
-            আইডি টি লিখুন
-          </p>
+          <p className="text-xl text-green-500">Copy number and send money</p>
 
           <CopyNumberForm method="nagad" />
           <DepositForm method="nagad" />

@@ -4,7 +4,7 @@ import type { NextPage } from "next"
 
 // import { useDeposit } from "../../hooks/useDeposits"
 // import { useWithdraw } from "../../hooks/useWithdraw"
-import { useAccount } from "../../hooks/useAccount"
+// import { useAccount } from "../../hooks/useAccount"
 import { useRouter } from "next/router"
 
 import Balance from "../../components/Balance"
@@ -26,7 +26,7 @@ import { signOut } from "next-auth/react"
 // import { trpc } from "../../utils/trpc"
 
 const Dashboard: NextPage = () => {
-  const { data: account } = useAccount()
+  // const { data: account } = useAccount()
   // const { data: deposits } = useDeposit()
   // const { data: withdraws } = useWithdraw()
   const { data: settings } = useSettings()

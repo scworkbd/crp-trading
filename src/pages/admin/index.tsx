@@ -3,8 +3,8 @@ import AdminPage from "../../components/AdminPage"
 import { trpc } from "../../utils/trpc"
 
 const AdminHome = () => {
-  const { data: deposits } = trpc.useQuery(["deposit.cryptoDeposits"])
-  const { data: withdraws } = trpc.useQuery(["cwithdraw.withdraws"])
+  const { data: deposits } = trpc.useQuery(["deposit.deposits"])
+  const { data: withdraws } = trpc.useQuery(["withdraw.withdraws"])
   const { data: users } = trpc.useQuery(["admin.users"])
 
   return (

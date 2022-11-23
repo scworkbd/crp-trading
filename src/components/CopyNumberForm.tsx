@@ -13,7 +13,7 @@ const CopyNumberForm = ({ method }: { method: "bkash" | "nagad" | "upay" }) => {
   const copyNumber = () => {
     navigator.clipboard.writeText(inputRef.current?.value as string)
     setText("Copied")
-    toast.success("নাম্বার কপি করা হয়েছে")
+    toast.success("Copied!")
 
     setTimeout(() => {
       setText("Copy")
@@ -21,7 +21,7 @@ const CopyNumberForm = ({ method }: { method: "bkash" | "nagad" | "upay" }) => {
   }
 
   return (
-    <div className="flex flex-col gap-3 mt-10 w-full">
+    <div className="flex items-center mt-3 w-full">
       <input
         ref={inputRef}
         type="text"
@@ -32,10 +32,13 @@ const CopyNumberForm = ({ method }: { method: "bkash" | "nagad" | "upay" }) => {
             ? settings?.nagad
             : settings?.upay
         }
-        className="px-5 py-2 border-2 border-rose-600 w-full  text-black"
+        className="border-0 !p-0 w-full  text-black"
         disabled
       />
-      <button onClick={copyNumber} className="px-5 py-2 bg-rose-900 text-white">
+      <button
+        onClick={copyNumber}
+        className="px-5 py-2 bg-black text-white w-max rounded-md"
+      >
         {text}
       </button>
     </div>

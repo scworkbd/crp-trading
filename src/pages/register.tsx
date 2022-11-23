@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { trpc } from "../utils/trpc"
 import { useRouter } from "next/router"
-import { BiChevronRight, BiLockAlt } from "react-icons/bi"
+import { BiChevronRight } from "react-icons/bi"
 import Image from "next/image"
 
 type Credentials = {

@@ -33,7 +33,7 @@ const Deposit: NextPage = () => {
             </div>
           </Link>
 
-          <Link href="/user/deposit/bkash">
+          <Link href="/user/deposit/nagad">
             <div className="flex items-center bg-zinc-100 shadow-md p-5 gap-5 rounded-lg">
               <div>
                 <Image
