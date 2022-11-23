@@ -152,50 +152,6 @@ export const userRouter = createRouter()
       })
     },
   })
-  .mutation("depositCrypto", {
-    input: z.object({
-      amount: z.number(),
-      tnx_id: z.string(),
-      image_url: z.string(),
-    }),
-    async resolve({ ctx, input }) {
-      const user = await ctx.prisma.user.findUnique({
-        where: {
-          username: ctx.session?.user?.username,
-        },
-      })
-
-      if (!user) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "User not found",
-        })
-      }
-
-      const depos = await ctx.prisma.crytoDeposit.findUnique({
-        where: {
-          tnx_id: input.tnx_id,
-        },
-      })
-
-      if (depos) {
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message: "Invalid transaction Id",
-        })
-      }
-
-      await ctx.prisma.crytoDeposit.create({
-        data: {
-          date: new Date(),
-          amount: input.amount,
-          image_url: input.image_url,
-          userId: user.id,
-          tnx_id: input.tnx_id,
-        },
-      })
-    },
-  })
   .query("depositsByUser", {
     async resolve({ ctx }) {
       const deposits = await ctx.prisma.deposit.findMany({
@@ -204,17 +160,6 @@ export const userRouter = createRouter()
           method: {
             not: "referral",
           },
-        },
-      })
-
-      return deposits
-    },
-  })
-  .query("CryptoDepositsByUser", {
-    async resolve({ ctx }) {
-      const deposits = await ctx.prisma.crytoDeposit.findMany({
-        where: {
-          userId: ctx.session?.user?.id,
         },
       })
 
@@ -313,72 +258,6 @@ export const userRouter = createRouter()
       })
     },
   })
-  .mutation("withdrawCrypto", {
-    input: z.object({
-      amount: z.number(),
-      address: z.string(),
-    }),
-    async resolve({ ctx, input }) {
-      const user = await ctx.prisma.user.findUnique({
-        where: {
-          id: ctx.session?.user?.id as string,
-        },
-      })
-
-      if (!user) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Please log in",
-        })
-      }
-
-      if (!user.current_pack) {
-        throw new TRPCError({
-          code: "FORBIDDEN",
-          message: "Account is not active",
-        })
-      }
-
-      if (user.balance < input.amount) {
-        throw new TRPCError({
-          code: "BAD_REQUEST",
-          message: "Not enough balance",
-        })
-      }
-
-      await ctx.prisma.user.update({
-        where: {
-          id: user.id,
-        },
-        data: {
-          balance: user.balance - input.amount,
-        },
-      })
-
-      const fees = 1
-
-      await ctx.prisma.cryptoWithdraw.create({
-        data: {
-          userId: user.id,
-          amount: input.amount,
-          address: input.address,
-          date: new Date(),
-          fees,
-        },
-      })
-    },
-  })
-  .query("usersWithdrawCrypto", {
-    async resolve({ ctx }) {
-      const withdraws = await ctx.prisma.cryptoWithdraw.findMany({
-        where: {
-          userId: ctx.session?.user?.id as string,
-        },
-      })
-
-      return withdraws
-    },
-  })
   .mutation("subscribe", {
     input: z.object({
       pack: z.string(),
@@ -434,7 +313,7 @@ export const userRouter = createRouter()
           current_pack: pack.id,
           started_at: current,
           valid_till: future,
-          balance: user.balance - (pack.price - (pack.cashback || 0)),
+          balance: user.balance - pack.price,
         },
       })
 
