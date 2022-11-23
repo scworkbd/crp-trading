@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { toast } from "react-hot-toast"
 import { trpc } from "../utils/trpc"
 import { useRouter } from "next/router"
-import CustomToast from "./CustomToast"
 import { BiLoaderAlt } from "react-icons/bi"
 
 const Timer = () => {
@@ -12,16 +11,11 @@ const Timer = () => {
 
   const { mutate } = trpc.useMutation(["user.work"], {
     onSuccess: () => {
-      toast.custom(
-        <CustomToast
-          success
-          message="You have been rewarded for watching ads"
-        />
-      )
+      toast.success("You have been rewarded for watching ads")
       router.push("/user/ptc")
     },
     onError: (error) => {
-      toast.custom(<CustomToast message={error.message} />)
+      toast.error(error.message)
     },
   })
 

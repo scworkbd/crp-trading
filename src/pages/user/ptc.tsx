@@ -28,15 +28,13 @@ const Dashboard: NextPage = () => {
     if (!account || works === undefined) return
 
     if (!account.current_pack) {
-      toast.custom(
-        <CustomToast message="Please purchase a package to start working" />
-      )
+      toast.error("Please purchase a package to start working")
       router.push("/user/dashboard")
       return
     }
 
     if (works <= 0) {
-      toast.custom(<CustomToast message="Daily ads limit has been finished" />)
+      toast.error("Daily ads limit has been finished")
       router.push("/user/dashboard")
     }
   }, [works, router, account])

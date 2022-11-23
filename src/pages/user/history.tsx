@@ -28,7 +28,7 @@ const History = () => {
               <div className="flex items-center justify-between">
                 <h1 className="text-lg font-bold">Video</h1>
                 <h1 className="text-xl font-bold text-white">
-                  {pack?.per_click} BDT
+                  {pack?.per_click || 0} BDT
                 </h1>
               </div>
               <p className="text-right">

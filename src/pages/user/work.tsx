@@ -16,7 +16,7 @@ const Work = () => {
 
   useEffect(() => {
     if (works !== undefined && works <= 0) {
-      toast.custom(<CustomToast message="Todays limit finished" />)
+      toast.error("Todays limit finished")
       router.push("/user/dashboard")
     }
   }, [works, router])

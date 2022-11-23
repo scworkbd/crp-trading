@@ -4,7 +4,6 @@ import { trpc } from "../utils/trpc"
 import { useSession } from "next-auth/react"
 import { toast } from "react-hot-toast"
 import { BiLoaderAlt } from "react-icons/bi"
-import CustomToast from "./CustomToast"
 import { useSettings } from "../hooks/useSettings"
 type Props = {
   method: "bkash" | "nagad" | "upay"

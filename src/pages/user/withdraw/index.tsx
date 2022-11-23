@@ -87,19 +87,6 @@ const Withdraw: NextPage = () => {
     }
   }
 
-  useEffect(() => {
-    // router.push("/user/withdraw/crypto")
-    // if (account) {
-    //   if (!account.current_pack) {
-    //     toast.custom(
-    //       <CustomToast message="PLease purchase a package to activate your account" />
-    //     )
-    //     router.push("/user/dashboard")
-    //   }
-    // }
-    // Deps [account, router]
-  }, [router])
-
   return (
     <>
       <DashPage hideFooter>
