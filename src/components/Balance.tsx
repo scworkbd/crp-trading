@@ -20,7 +20,7 @@ const Balance = () => {
       <div className="col-span-2 p-5 bg-indigo-600 flex items-center justify-between rounded-md">
         <div className="flex flex-col justify-center">
           <p className="text-xl text-gray-300">Total Balance</p>
-          <p className="text-white text-4xl font-bold">${user?.balance}</p>
+          <p className="text-white text-4xl font-bold">৳ {user?.balance}</p>
 
           {user && pack && (
             <p className="mt-5">

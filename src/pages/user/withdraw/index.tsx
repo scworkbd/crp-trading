@@ -166,6 +166,10 @@ const Withdraw: NextPage = () => {
                 <>
                   <h2 className="text-2xl font-bold">Method: {method}</h2>
 
+                  <p className="text-red-500">
+                    Minimum withdraw {settings.min_withdraw} BDT and Maximum{" "}
+                    {settings.max_withdraw} BDT
+                  </p>
                   <form
                     onSubmit={handleSubmit(submitWithdrawal)}
                     className="flex flex-col gap-2 mt-3"
@@ -210,6 +214,7 @@ const Withdraw: NextPage = () => {
                       {withData.method}
                     </span>
                   </h2>
+
                   <h2 className="text-2xl">Amount: {withData.amount} BDT</h2>
                   <h2 className="text-2xl">Fees: {withData.fees} BDT</h2>
                   <h2 className="text-2xl">
