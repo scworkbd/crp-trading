@@ -19,17 +19,6 @@ export const depositRouter = createRouter()
       return dps
     },
   })
-  .query("cryptoDeposits", {
-    async resolve({ ctx }) {
-      const dps = await ctx.prisma.crytoDeposit.findMany({
-        orderBy: {
-          amount: "desc",
-        },
-      })
-
-      return dps
-    },
-  })
   .query("depositsWUser", {
     async resolve({ ctx }) {
       const dps = await ctx.prisma.deposit.findMany({
@@ -44,71 +33,6 @@ export const depositRouter = createRouter()
       })
 
       return dps
-    },
-  })
-  .query("cryptoDepositsWUser", {
-    async resolve({ ctx }) {
-      const dps = await ctx.prisma.crytoDeposit.findMany({
-        include: {
-          user: true,
-        },
-      })
-
-      return dps
-    },
-  })
-  .mutation("approveCryptoDeposit", {
-    input: z.object({
-      depId: z.string(),
-    }),
-    async resolve({ ctx, input }) {
-      const dep = await ctx.prisma.crytoDeposit.findUnique({
-        where: {
-          id: input.depId,
-        },
-        include: {
-          user: true,
-        },
-      })
-
-      if (dep && !dep.approved) {
-        const user = await ctx.prisma.user.findUnique({
-          where: {
-            id: dep.user.id,
-          },
-        })
-
-        if (user) {
-          await ctx.prisma.user.update({
-            where: {
-              id: user.id,
-            },
-            data: {
-              balance: user.balance + dep.amount,
-            },
-          })
-
-          await ctx.prisma.crytoDeposit.update({
-            where: {
-              id: dep.id,
-            },
-            data: {
-              approved: true,
-              pending: false,
-            },
-          })
-        } else {
-          throw new TRPCError({
-            code: "NOT_FOUND",
-            message: "User not found",
-          })
-        }
-      } else {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Deposit not found",
-        })
-      }
     },
   })
   .mutation("approveDeposit", {
@@ -181,22 +105,6 @@ export const depositRouter = createRouter()
       })
     },
   })
-  .mutation("cancelCryptoDeposit", {
-    input: z.object({
-      depId: z.string(),
-    }),
-    async resolve({ ctx, input }) {
-      await ctx.prisma.crytoDeposit.update({
-        where: {
-          id: input.depId,
-        },
-        data: {
-          pending: false,
-          approved: false,
-        },
-      })
-    },
-  })
   .mutation("undoDepApprove", {
     input: z.object({
       depId: z.string(),
@@ -210,47 +118,6 @@ export const depositRouter = createRouter()
 
       if (dep) {
         await ctx.prisma.deposit.update({
-          where: {
-            id: dep.id,
-          },
-          data: {
-            approved: false,
-            pending: false,
-          },
-        })
-
-        const user = await ctx.prisma.user.findUnique({
-          where: {
-            id: dep.userId,
-          },
-        })
-
-        if (user) {
-          await ctx.prisma.user.update({
-            where: {
-              id: user.id,
-            },
-            data: {
-              balance: user.balance - dep.amount,
-            },
-          })
-        }
-      }
-    },
-  })
-  .mutation("undocryptoDepApprove", {
-    input: z.object({
-      depId: z.string(),
-    }),
-    async resolve({ ctx, input }) {
-      const dep = await ctx.prisma.crytoDeposit.findUnique({
-        where: {
-          id: input.depId,
-        },
-      })
-
-      if (dep) {
-        await ctx.prisma.crytoDeposit.update({
           where: {
             id: dep.id,
           },

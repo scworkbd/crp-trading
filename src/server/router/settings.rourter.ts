@@ -16,7 +16,6 @@ export const settingsRouter = createRouter()
         upay: z.string(),
         whatsapp_number: z.string(),
         telegram_link: z.string(),
-        live_chat_link: z.string(),
         registration_bonus: z.number(),
         referral_commision: z.number(),
         bkash_percentage: z.number(),
@@ -25,8 +24,6 @@ export const settingsRouter = createRouter()
         min_deposit: z.number(),
         cashout_enabled: z.boolean(),
         cashout_notice: z.string().optional(),
-        app_download_link: z.string().optional(),
-        cryptoAddress: z.string(),
       }),
     }),
     async resolve({ ctx, input }) {
@@ -40,23 +37,5 @@ export const settingsRouter = createRouter()
           data: input.data,
         })
       }
-    },
-  })
-  .mutation("updateImage", {
-    input: z.object({
-      url: z.string(),
-    }),
-    async resolve({ ctx, input }) {
-      const settings = await ctx.prisma.settings.findFirst()
-
-      await ctx.prisma.settings.update({
-        where: {
-          id: settings?.id,
-        },
-
-        data: {
-          qrCodeUrl: input.url,
-        },
-      })
     },
   })

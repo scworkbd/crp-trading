@@ -7,7 +7,7 @@ import { adminRouter } from "./router/admin.router"
 import { depositRouter } from "./router/deposit.router"
 import { withdrawRouter } from "./router/withdraw.router"
 import { settingsRouter } from "./router/settings.rourter"
-import { withdrawRouter as cWithdrawRouter } from "./router/cryptowithdraw.router"
+// import { withdrawRouter as cWithdrawRouter } from "./router/cryptowithdraw.router"
 
 export const appRouter = createRouter()
   .transformer(superjson)
@@ -15,7 +15,6 @@ export const appRouter = createRouter()
   .merge("admin.", adminRouter)
   .merge("deposit.", depositRouter)
   .merge("withdraw.", withdrawRouter)
-  .merge("cwithdraw.", cWithdrawRouter)
   .merge("settings.", settingsRouter)
 
 // export type definition of API
