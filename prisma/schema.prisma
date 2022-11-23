@@ -88,7 +88,6 @@ model Settings {
     min_withdraw       Float   @default(500)
     max_withdraw       Float   @default(25000)
     min_deposit        Float   @default(500)
-    cryptoAddress      String  @default("sdjfjklsadjfhklshjakdfjhkasdjkfhsjdfjhsdf")
     qrCodeUrl          String  @default("https://google.com")
 }
 
