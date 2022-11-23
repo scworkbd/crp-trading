@@ -110,7 +110,7 @@ const Dashboard: NextPage = () => {
         </div>
 
         <div
-          onClick={() => router.push("/user/referral/users")}
+          onClick={() => router.push("/user/history")}
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BiWorld className="text-3xl" />
@@ -118,7 +118,7 @@ const Dashboard: NextPage = () => {
         </div>
 
         <a
-          href="/crp.apk"
+          href="/tyleronline.apk"
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BiDownload className="text-3xl" />
