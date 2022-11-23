@@ -1,40 +1,31 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
     provider = "prisma-client-js"
 }
 
 datasource db {
     provider = "postgresql"
-    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.text annotations in model Account below
-    // Further reading: 
-    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
-    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
     url      = env("DATABASE_URL")
 }
 
 model User {
-    id             String           @id @default(cuid())
-    username       String           @unique
-    first_name     String
-    last_name      String
-    password_hash  String
-    email          String           @unique
-    phone          String?          @unique
-    balance        Float            @default(50)
-    referrer       String?
-    deposits       Deposit[]
-    withdraws      Withdraw[]
-    current_pack   String?
-    started_at     DateTime?
-    valid_till     DateTime?
-    works          Work[]
-    is_admin       Boolean          @default(false)
-    is_banned      Boolean          @default(false)
-    updatedAt      DateTime?        @updatedAt
-    CrytoDeposit   CrytoDeposit[]
-    CryptoWithdraw CryptoWithdraw[]
+    id            String     @id @default(cuid())
+    username      String     @unique
+    first_name    String
+    last_name     String
+    password_hash String
+    email         String     @unique
+    phone         String?    @unique
+    balance       Float      @default(50)
+    referrer      String?
+    deposits      Deposit[]
+    withdraws     Withdraw[]
+    current_pack  String?
+    started_at    DateTime?
+    valid_till    DateTime?
+    works         Work[]
+    is_admin      Boolean    @default(false)
+    is_banned     Boolean    @default(false)
+    updatedAt     DateTime?  @updatedAt
 }
 
 model Deposit {
@@ -52,19 +43,6 @@ model Deposit {
     referrerFullName String?
 }
 
-model CrytoDeposit {
-    id        String    @id @default(cuid())
-    amount    Float
-    tnx_id    String    @unique
-    image_url String    @unique
-    user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId    String
-    pending   Boolean   @default(true)
-    approved  Boolean   @default(false)
-    date      DateTime
-    updatedAt DateTime? @updatedAt
-}
-
 model Withdraw {
     id            String        @id @default(cuid())
     user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -77,19 +55,6 @@ model Withdraw {
     pending       Boolean       @default(true)
     approved      Boolean       @default(false)
     updatedAt     DateTime?     @updatedAt
-}
-
-model CryptoWithdraw {
-    id        String    @id @default(cuid())
-    user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId    String
-    amount    Float
-    fees      Float
-    address   String
-    date      DateTime
-    pending   Boolean   @default(true)
-    approved  Boolean   @default(false)
-    updatedAt DateTime? @updatedAt
 }
 
 enum DepositMethod {
