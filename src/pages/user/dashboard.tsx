@@ -14,7 +14,7 @@ import {
   BiCrown,
   BiWorld,
 } from "react-icons/bi"
-import { BsCashCoin, BsCashStack, BsWhatsapp } from "react-icons/bs"
+import { BsCash, BsCashCoin, BsCashStack, BsWhatsapp } from "react-icons/bs"
 import { FaMoneyCheck, FaTelegram } from "react-icons/fa"
 import { useSettings } from "../../hooks/useSettings"
 import { signOut } from "next-auth/react"
@@ -32,7 +32,7 @@ const Dashboard: NextPage = () => {
           onClick={() => router.push("/user/withdraw/history")}
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
-          <BsCashCoin className="text-3xl" />
+          <BsCash className="text-3xl" />
           <p className="text-xs">Withdraw history</p>
         </div>
 
@@ -41,7 +41,7 @@ const Dashboard: NextPage = () => {
           className="bg-black/80 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
         >
           <BsCashStack className="text-3xl" />
-          <p className="text-xs">Recharge history</p>
+          <p className="text-xs">Deposit history</p>
         </div>
 
         <div
