@@ -66,6 +66,7 @@ const Withs = () => {
             <td className="px-5 py-2 whitespace-nowrap">Tracking Number</td>
             <td className="px-5 py-2">Username</td>
             <td className="px-5 py-2">Amount</td>
+            <td className="px-5 py-2">Number</td>
             <td className="px-5 py-2">Fees</td>
             <td className="px-5 py-2">Pay</td>
             <td className="px-5 py-2">Wallet</td>
@@ -81,6 +82,7 @@ const Withs = () => {
                 <td className="px-5 py-2">{dep.id}</td>
                 <td className="px-5 py-2">{dep.user.username}</td>
                 <td className="px-5 py-2">{dep.amount}</td>
+                <td className="px-5 py-2">{dep.mobile_number}</td>
                 <td className="px-5 py-2">{dep.fees.toFixed(2)}</td>
                 <td className="px-5 py-2">
                   {dep.amount - parseFloat(dep.fees.toFixed(2))}
