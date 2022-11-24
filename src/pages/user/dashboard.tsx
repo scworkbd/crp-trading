@@ -9,16 +9,13 @@ import DashPage from "../../components/DashPage"
 import {
   BiUserPlus,
   BiTask,
-  BiLogOut,
   BiDownload,
-  BiCrown,
   BiWorld,
   BiChevronRight,
 } from "react-icons/bi"
-import { BsCash, BsCashCoin, BsCashStack, BsWhatsapp } from "react-icons/bs"
-import { FaMoneyCheck, FaTelegram, FaTelegramPlane } from "react-icons/fa"
+import { BsCash, BsCashStack, BsWhatsapp } from "react-icons/bs"
+import { FaMoneyCheck, FaTelegramPlane } from "react-icons/fa"
 import { useSettings } from "../../hooks/useSettings"
-import { signOut } from "next-auth/react"
 import { TbPackage } from "react-icons/tb"
 
 const Dashboard: NextPage = () => {
