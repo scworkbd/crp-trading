@@ -13,11 +13,13 @@ import {
   BiDownload,
   BiCrown,
   BiWorld,
+  BiChevronRight,
 } from "react-icons/bi"
 import { BsCash, BsCashCoin, BsCashStack, BsWhatsapp } from "react-icons/bs"
-import { FaMoneyCheck, FaTelegram } from "react-icons/fa"
+import { FaMoneyCheck, FaTelegram, FaTelegramPlane } from "react-icons/fa"
 import { useSettings } from "../../hooks/useSettings"
 import { signOut } from "next-auth/react"
+import { TbPackage } from "react-icons/tb"
 
 const Dashboard: NextPage = () => {
   const { data: settings } = useSettings()
@@ -27,95 +29,91 @@ const Dashboard: NextPage = () => {
     <DashPage>
       <Balance />
 
-      <div className="mt-5 grid grid-cols-3 gap-3 p-5">
+      <div className="mt-5 grid grid-cols-2 gap-3 p-5">
+        <div
+          onClick={() => router.push("/user/package")}
+          className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
+        >
+          <TbPackage className="text-3xl text-indigo-500" />
+          <p>Package</p>
+        </div>
+
         <div
           onClick={() => router.push("/user/withdraw/history")}
-          className="bg-indigo-900 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
+          className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
         >
-          <BsCash className="text-3xl" />
-          <p className="text-xs">Withdraw history</p>
+          <BsCash className="text-3xl text-indigo-500" />
+          <p>Withdraw history</p>
         </div>
 
         <div
           onClick={() => router.push("/user/deposit/history")}
-          className="bg-indigo-900 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
+          className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
         >
-          <BsCashStack className="text-3xl" />
-          <p className="text-xs">Deposit history</p>
-        </div>
-
-        <div
-          onClick={() => router.push("/user/package")}
-          className="bg-yellow-400/80 p-5 rounded-md text-black flex flex-col items-center text-center gap-3"
-        >
-          <BiCrown className="text-3xl" />
-          <p className="text-xs">Package</p>
+          <BsCashStack className="text-3xl text-indigo-500" />
+          <p>Deposit history</p>
         </div>
 
         <div
           onClick={() => router.push("/user/ptc")}
-          className="bg-indigo-900 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
+          className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
         >
-          <BiTask className="text-3xl" />
-          <p className="text-xs">Work</p>
+          <BiTask className="text-3xl text-indigo-500" />
+          <p>Work</p>
         </div>
 
         <div
           onClick={() => router.push("/user/referral/users")}
-          className="bg-indigo-900 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
+          className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
         >
-          <BiUserPlus className="text-3xl" />
-          <p className="text-xs">Refer</p>
+          <BiUserPlus className="text-3xl text-indigo-500" />
+          <p>Refer</p>
         </div>
 
         <div
           onClick={() => router.push("/user/referral/history")}
-          className="bg-indigo-900 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
+          className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
         >
-          <FaMoneyCheck className="text-3xl" />
-          <p className="text-xs">Refer Income</p>
+          <FaMoneyCheck className="text-3xl text-indigo-500" />
+          <p>Refer Income</p>
         </div>
 
         <div
           onClick={() => router.push("/user/history")}
-          className="bg-indigo-900 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
+          className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
         >
-          <BiWorld className="text-3xl" />
-          <p className="text-xs">Work History</p>
+          <BiWorld className="text-3xl text-indigo-500" />
+          <p>Work History</p>
         </div>
 
         <a
           href="/tyleronline.apk"
-          className="bg-indigo-900 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
+          className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
         >
-          <BiDownload className="text-3xl" />
-          <p className="text-xs">Download App</p>
+          <BiDownload className="text-3xl text-indigo-500" />
+          <p>Download App</p>
         </a>
-
-        <div
-          onClick={() => signOut()}
-          className="bg-red-500 p-5 rounded-md text-white flex flex-col items-center text-center gap-3"
-        >
-          <BiLogOut className="text-3xl rotate-180" />
-          <p>Logout</p>
-        </div>
       </div>
 
-      <div className="mt-5 grid grid-cols-2 gap-5 p-5">
+      <div className="mt-5 grid grid-cols-1 gap-5 p-5">
         <a
           href={`https://wa.me/${settings?.whatsapp_number}`}
-          className="bg-indigo-600 p-5 rounded-md text-white flex flex-col items-center gap-2"
+          className="bg-white shadow-md border-[1px] p-5 rounded-md text-black flex items-center gap-4"
         >
-          <BsWhatsapp className="text-4xl" />
-          <p className="text-2xl text-white">Live Chat</p>
+          <BsWhatsapp className="text-4xl text-green-500" />
+          <p className="text-2xl">Live Chat</p>
+
+          <BiChevronRight className="text-2xl ml-auto" />
         </a>
 
         <a
           href={settings?.telegram_link}
-          className="bg-sky-500 p-5 rounded-md text-white flex flex-col items-center gap-2"
+          className="bg-white shadow-md border-[1px] p-5 rounded-md text-black flex items-center gap-4"
         >
-          <FaTelegram className="text-4xl" />
-          <p className="text-2xl text-white">Telegram</p>
+          <FaTelegramPlane className="text-4xl text-sky-500" />
+          <p className="text-2xl">Telegram</p>
+
+          <BiChevronRight className="text-2xl ml-auto" />
         </a>
       </div>
     </DashPage>
