@@ -95,7 +95,7 @@ const DashPage = ({ children }: Props) => {
         <footer
           className="
           max-w-lg mx-auto
-          bg-black text-white p-5 
+          bg-sky-700 text-white p-5 
           flex items-center justify-between gap-4
         "
         >
