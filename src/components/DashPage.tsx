@@ -77,7 +77,7 @@ const DashPage = ({ children }: Props) => {
         </div>
       )}
 
-      <header className="flex justify-between items-center px-5 h-16 bg-zinc-200">
+      <header className="flex justify-between items-center px-5 h-16 bg-green-100">
         <div>
           <Image src="/logo.png" height={50} width={50} alt="logo" />
         </div>
@@ -114,14 +114,6 @@ const DashPage = ({ children }: Props) => {
             <BiCrown className="text-2xl" />
             <span>Package</span>
           </div>
-
-          {/* <div
-          onClick={() => router.push("/user/cpackages")}
-          className="flex flex-col items-center"
-        >
-          <TbPackage className="text-2xl" />
-          <span>Package</span>
-        </div> */}
 
           <div
             onClick={() => router.push("/user/profile")}

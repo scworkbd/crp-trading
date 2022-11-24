@@ -6,7 +6,6 @@ import DashPage from "../../components/DashPage"
 import Timer from "../../components/Timer"
 import { trpc } from "../../utils/trpc"
 import { toast } from "react-hot-toast"
-import CustomToast from "../../components/CustomToast"
 
 const Work = () => {
   const { data: works } = trpc.useQuery(["user.works"])

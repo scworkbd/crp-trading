@@ -31,7 +31,6 @@ const EditUser = () => {
       data: {
         ...value,
         balance: Number(value.balance) || (user?.balance as number),
-        phone: undefined,
       },
     })
   }
@@ -73,10 +72,10 @@ const EditUser = () => {
             />
           </div>
 
-          {/* <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <label>Mobile</label>
             <input type="text" placeholder="Mobile" {...register("phone")} />
-          </div> */}
+          </div>
 
           <div className="flex flex-col gap-2">
             <label>Email</label>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, {  useState } from "react"
 import type { NextPage } from "next"
 import DashPage from "../../../components/DashPage"
 import Image from "next/image"
@@ -7,7 +7,6 @@ import { useForm } from "react-hook-form"
 import { toast } from "react-hot-toast"
 import { trpc } from "../../../utils/trpc"
 import { useSettings } from "../../../hooks/useSettings"
-import { useRouter } from "next/router"
 import { BiChevronRight } from "react-icons/bi"
 
 type Methods = "bkash" | "nagad" | "upay"
@@ -25,7 +24,6 @@ const Withdraw: NextPage = () => {
     fees: number
   }
 
-  const router = useRouter()
   const { data: settings } = useSettings()
   const [withData, setWithData] = useState<WithData>()
   const { data: account, refetch } = useAccount()

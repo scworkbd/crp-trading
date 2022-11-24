@@ -5,7 +5,6 @@ import { useRouter } from "next/router"
 import { trpc } from "../../utils/trpc"
 import { toast } from "react-hot-toast"
 import { useAccount } from "../../hooks/useAccount"
-import CustomToast from "../../components/CustomToast"
 
 const Dashboard: NextPage = () => {
   const router = useRouter()
