@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react"
-import { signOut, useSession } from "next-auth/react"
+
+import Image from "next/image"
 import { useRouter } from "next/router"
+import { signOut, useSession } from "next-auth/react"
 
 import { signIn } from "next-auth/react"
 
-import Loading from "./Loading"
-import { BiChevronLeft, BiCrown } from "react-icons/bi"
 import { AiFillHome } from "react-icons/ai"
-import { useAccount } from "../hooks/useAccount"
 import { FaSignOutAlt, FaUser } from "react-icons/fa"
-import Image from "next/image"
+import { BiChevronLeft, BiCrown } from "react-icons/bi"
+
+import Loading from "./Loading"
+import { useAccount } from "../hooks/useAccount"
 
 type Props = {
   children?: React.ReactNode | React.ReactNode[]
