@@ -89,30 +89,31 @@ const DashPage = ({ children }: Props) => {
         <div>{children}</div>
       </div>
 
-      <footer
-        className="
-          fixed bottom-0 left-0 w-full 
+      <div className="fixed bottom-0 left-0 w-full ">
+        <footer
+          className="
+          max-w-lg mx-auto
           bg-black text-white p-5 
           flex items-center justify-between gap-4
         "
-      >
-        <div
-          className="flex flex-col items-center"
-          onClick={() => router.push("/user/dashboard")}
         >
-          <AiFillHome className="text-2xl" />
-          <span>Home</span>
-        </div>
+          <div
+            className="flex flex-col items-center"
+            onClick={() => router.push("/user/dashboard")}
+          >
+            <AiFillHome className="text-2xl" />
+            <span>Home</span>
+          </div>
 
-        <div
-          onClick={() => router.push("/user/package")}
-          className="flex flex-col items-center"
-        >
-          <BiCrown className="text-2xl" />
-          <span>Package</span>
-        </div>
+          <div
+            onClick={() => router.push("/user/package")}
+            className="flex flex-col items-center"
+          >
+            <BiCrown className="text-2xl" />
+            <span>Package</span>
+          </div>
 
-        {/* <div
+          {/* <div
           onClick={() => router.push("/user/cpackages")}
           className="flex flex-col items-center"
         >
@@ -120,14 +121,15 @@ const DashPage = ({ children }: Props) => {
           <span>Package</span>
         </div> */}
 
-        <div
-          onClick={() => router.push("/user/profile")}
-          className="flex flex-col items-center"
-        >
-          <FaUser className="text-2xl" />
-          <span>Profile</span>
-        </div>
-      </footer>
+          <div
+            onClick={() => router.push("/user/profile")}
+            className="flex flex-col items-center"
+          >
+            <FaUser className="text-2xl" />
+            <span>Profile</span>
+          </div>
+        </footer>
+      </div>
     </div>
   )
 }

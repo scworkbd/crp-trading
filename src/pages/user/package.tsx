@@ -65,9 +65,9 @@ const Package = () => {
               </h2>
 
               <ul className="mt-5 text-white text-xl">
-                <li>Per Task: {pack.per_click} BDT</li>
-                <li>Daily Task: {pack.daily_limit}</li>
-                <li>Daily Earn: {pack.daily_limit * pack.per_click} BDT</li>
+                <li>Per Ads: {pack.per_click} BDT</li>
+                <li>Daily Ads: {pack.daily_limit}</li>
+                <li>Daily Income: {pack.daily_limit * pack.per_click} BDT</li>
                 <li>
                   <span>Refer Bonus: </span>
                   <span>
