@@ -94,7 +94,7 @@ const Withdraw: NextPage = () => {
               Withdraw
             </h1>
             <h1 className="text-2xl text-center text-red-500 font-bold">
-              Account is not active
+              Please buy a package to withdraw money
             </h1>
           </div>
         ) : (
