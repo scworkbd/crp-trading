@@ -6,13 +6,12 @@ import { toast } from "react-hot-toast"
 import { Packages } from "@prisma/client"
 import { Dialog, Transition } from "@headlessui/react"
 
-import { BiLoaderAlt } from "react-icons/bi"
+import { BiCart, BiLoaderAlt } from "react-icons/bi"
 
 import DashPage from "../../components/DashPage"
 import { useSettings } from "../../hooks/useSettings"
 import { trpc } from "../../utils/trpc"
 import { useAccount } from "../../hooks/useAccount"
-import { BsFillLightningChargeFill } from "react-icons/bs"
 
 const Package = () => {
   const [selPack, setSelPack] = useState<Packages | null>(null)
@@ -54,7 +53,7 @@ const Package = () => {
         </h1>
         <div className="grid grid-cols-1 gap-5 mt-5">
           {packages?.map((pack) => (
-            <div className="p-5 bg-zinc-900" key={pack.id}>
+            <div className="p-5 bg-indigo-500 rounded-md" key={pack.id}>
               {/* <h1 className="flex items-center justify-center">
                 <BiPackage className="text-5xl text-white" />
               </h1> */}
@@ -84,11 +83,11 @@ const Package = () => {
               <button
                 onClick={() => setSelPack(pack)}
                 className="
-                  bg-white hover:bg-slate-100 text-black 
+                  bg-indigo-900 text-white
                   flex items-center  justify-center gap-2 
                   px-5 py-3 w-full mt-5"
               >
-                Activate <BsFillLightningChargeFill />
+                Buy Now <BiCart />
               </button>
             </div>
           ))}
