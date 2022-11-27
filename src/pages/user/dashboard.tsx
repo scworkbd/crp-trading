@@ -84,7 +84,7 @@ const Dashboard: NextPage = () => {
         </div>
 
         <a
-          href="/tyleronline.apk"
+          href="/app.apk"
           className="bg-white shadow-md text-black p-5 rounded-md flex items-center text-center gap-3 border-[1px]"
         >
           <BiDownload className="text-3xl text-indigo-500" />
