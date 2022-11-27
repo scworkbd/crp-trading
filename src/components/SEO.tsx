@@ -2,10 +2,10 @@ import Head from "next/head"
 import React from "react"
 
 const SEO = () => {
-  const _title = `Tyler Online`
-  const _description = "Tyle Online, Easy way to earn money online"
-  const _keywords = "tyler online"
-  const _author = "Tyler Online"
+  const _title = `Tyler SM`
+  const _description = "Tyle SM is an earning platform for everyone"
+  const _keywords = "tyler SM"
+  const _author = "Tyler SM"
 
   return (
     <Head>
@@ -21,7 +21,7 @@ const SEO = () => {
       <meta property="og:image" content="/logo.png" />
       <meta property="og:image:secure_url" content="/logo.png" />
       <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:alt" content="tyler online" />
+      <meta property="og:image:alt" content="tyler SM" />
     </Head>
   )
 }
